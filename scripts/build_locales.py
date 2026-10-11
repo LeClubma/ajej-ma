@@ -49,6 +49,18 @@ for lang in ("ar", "fr"):
         script.set("src", "/" + script.get("src").lstrip("/"))
     for img in doc.xpath("//img"):
         img.set("src", "/" + img.get("src").lstrip("/"))
+    for link in doc.xpath("//*[@data-event-link]"):
+        link.set("href", f"/{lang}/activities/youth-university-2026/")
+    doc.xpath("//aside[contains(concat(' ',normalize-space(@class),' '),' announcement-strip ')]")[0].set(
+        "aria-label", "إعلان نشاط" if lang == "ar" else "Annonce d’activité"
+    )
+    doc.xpath("//a[contains(concat(' ',normalize-space(@class),' '),' event-card-image ')]")[0].set(
+        "aria-label", translations[lang]["eventName"]
+    )
+    doc.xpath("//a[contains(concat(' ',normalize-space(@class),' '),' event-card-image ')]/img")[0].set(
+        "alt", "ملصق جامعة الشباب، 20 إلى 24 أكتوبر 2026 بالسعيدية"
+        if lang == "ar" else "Affiche de l’Université des jeunes, du 20 au 24 octobre 2026 à Saïdia"
+    )
     doc.xpath("//a[contains(concat(' ',normalize-space(@class),' '),' brand ')]")[0].set("href", f"/{lang}/")
     doc.xpath("//a[contains(concat(' ',normalize-space(@class),' '),' brand ')]")[0].set(
         "aria-label", "الصفحة الرئيسية، جمعية جسر الطفولة والشباب" if lang == "ar" else "Accueil, Association Jisr"

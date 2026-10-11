@@ -11,4 +11,14 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://ajej.ma/ar/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://ajej.ma/fr/" />
   </url>
+  <url>
+    <loc>https://ajej.ma/ar/activities/youth-university-2026/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ajej.ma/ar/activities/youth-university-2026/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ajej.ma/fr/activities/youth-university-2026/" />
+  </url>
+  <url>
+    <loc>https://ajej.ma/fr/activities/youth-university-2026/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ajej.ma/ar/activities/youth-university-2026/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ajej.ma/fr/activities/youth-university-2026/" />
+  </url>
 </urlset>
