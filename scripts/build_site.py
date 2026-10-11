@@ -58,6 +58,31 @@ def a(lang: str, page: str, label: str, cls: str = "") -> str:
     return f'<a class="{cls}" href="{url(lang, page)}">{label}</a>'
 
 
+ICON_SHAPES = {
+    "book": '<path d="M12 6.5c-2.7-1.5-5.8-1.7-8.5-.5v12c2.7-1.2 5.8-1 8.5.5 2.7-1.5 5.8-1.7 8.5-.5V6c-2.7-1.2-5.8-1-8.5.5Z"/><path d="M12 6.5v12"/>',
+    "tent": '<path d="M2.5 19.5 12 4l9.5 15.5H2.5Z"/><path d="M12 4v15.5M8.7 19.5l3.3-5 3.3 5"/>',
+    "people": '<circle cx="8" cy="8" r="2.3"/><circle cx="16" cy="8" r="2.3"/><path d="M3.5 19c.3-3.3 2-5 4.5-5s4.2 1.7 4.5 5m-1 0c.3-3.3 2-5 4.5-5s4.2 1.7 4.5 5"/>',
+    "dialogue": '<path d="M4 5.5h16v11H10l-5 3v-3H4z"/><path d="M8 10.5h8m-8 3h5"/>',
+    "spark": '<path d="m12 2 1.8 8.2L22 12l-8.2 1.8L12 22l-1.8-8.2L2 12l8.2-1.8L12 2Z"/>',
+    "arrow": '<path d="M5 19 19 5M9 5h10v10"/>',
+}
+
+
+def icon(name: str, extra_class: str = "") -> str:
+    return f'<svg class="site-icon {extra_class}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">{ICON_SHAPES[name]}</svg>'
+
+
+def polish_icons(markup: str) -> str:
+    for glyph, name in (("✳", "book"), ("◌", "tent"), ("↗", "people"), ("✦", "dialogue")):
+        markup = markup.replace(f'<div class="area-icon" aria-hidden="true">{glyph}</div>', f'<div class="area-icon" aria-hidden="true">{icon(name)}</div>')
+    markup = markup.replace('<span class="tiny-star">✦</span>', icon("spark", "small-icon"))
+    markup = markup.replace('<span class="topline-dot">✦</span>', icon("spark", "small-icon topline-icon"))
+    markup = markup.replace('<b>✦</b>', icon("spark", "ticker-icon"))
+    markup = markup.replace('<span aria-hidden="true">↗</span>', icon("arrow", "action-icon"))
+    markup = markup.replace(' ↗<', ' ' + icon("arrow", "action-icon") + '<')
+    return markup
+
+
 def header(lang: str, active: str) -> str:
     t = COPY[lang]
     other = "fr" if lang == "ar" else "ar"
@@ -98,14 +123,14 @@ def layout(lang: str, page: str, body: str) -> str:
 <meta property="og:type" content="website"><meta property="og:site_name" content="Association Jisr"><meta property="og:title" content="{escape(title, quote=True)} | {escape(t['short'], quote=True)}"><meta property="og:description" content="{escape(description, quote=True)}"><meta property="og:image" content="{image}"><meta property="og:url" content="{current}">
 <title>{escape(title)} | {escape(t['short'])}</title>
 <link rel="canonical" href="{current}"><link rel="alternate" hreflang="ar" href="https://ajej.ma{url('ar', page)}"><link rel="alternate" hreflang="fr" href="https://ajej.ma{url('fr', page)}"><link rel="alternate" hreflang="x-default" href="https://ajej.ma{url('ar', page)}">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site-2026-statute.css"><script defer src="/assets/site-2026.js"></script>
-</head><body>{header(lang, page)}<main id="main">{body}</main>{footer(lang)}</body></html>'''
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site-2026-compact.css"><script defer src="/assets/site-2026.js"></script>
+</head><body>{polish_icons(header(lang, page))}<main id="main">{polish_icons(body)}</main>{polish_icons(footer(lang))}</body></html>'''
 
 
 def page_hero(lang: str, eyebrow: str, title: str, lead: str, crumb: str = "") -> str:
     home = COPY[lang]["home"]
     breadcrumb = f'<nav class="breadcrumbs" aria-label="{ "مسار الصفحة" if lang == "ar" else "Fil d’Ariane" }"><a href="{url(lang)}">{home}</a><span aria-hidden="true">/</span><span>{crumb or title}</span></nav>'
-    return f'<section class="interior-hero"><div class="wrap">{breadcrumb}<span class="eyebrow">{eyebrow}</span><h1>{title}</h1><p>{lead}</p></div><div class="hero-orbit" aria-hidden="true"></div></section>'
+    return f'<section class="interior-hero"><div class="wrap">{breadcrumb}<span class="eyebrow">{eyebrow}</span><h1>{title}</h1><p>{lead}</p></div></section>'
 
 
 def home(lang: str) -> str:
