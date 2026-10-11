@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+:root{--blue:#163e6c;--blue2:#235d91;--green:#22866f;--ink:#193047;--muted:#5e7081;--line:#dbe6ed;--soft:#f3f8fb;--radius:20px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;color:var(--ink);background:#fff;font-family:Cairo,Arial,sans-serif;line-height:1.85}a{text-decoration:none;color:inherit}button{font:inherit;cursor:pointer}.container{width:min(1160px,calc(100% - 40px));margin-inline:auto}.skip{position:absolute;inset-block-start:-100px;background:white;padding:12px;z-index:30}.skip:focus{inset-block-start:0}.site-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.header-inner{display:flex;align-items:center;gap:24px;min-height:84px}.brand{display:flex;align-items:center;gap:12px;min-width:245px}.brand-mark{display:grid;place-items:center;color:#fff;background:linear-gradient(140deg,var(--blue),var(--green));width:52px;height:52px;border-radius:50%;font-weight:800;font-size:30px}.brand-text{display:flex;flex-direction:column;line-height:1.35}.brand-text strong{font-size:15px}.brand-text small{font-size:10px;letter-spacing:.09em;color:var(--green);font-weight:800}.nav{display:flex;align-items:center;gap:20px;margin-inline-start:auto}.nav a{font-size:13px;font-weight:700;white-space:nowrap}.nav a:hover,.text-link:hover{color:var(--green)}.lang,.menu-button{border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--blue);font-weight:800;padding:6px 12px}.menu-button{display:none}.hero{background:linear-gradient(110deg,#f5fafc 0%,#eaf5f4 100%);overflow:hidden}.hero-grid{min-height:565px;display:grid;grid-template-columns:1.06fr .94fr;align-items:center;gap:45px}.hero-copy{padding-block:65px}.eyebrow,.section-tag{display:inline-block;color:var(--green);font-weight:800;font-size:14px}.hero h1{font-size:clamp(34px,4.1vw,57px);letter-spacing:-.025em;line-height:1.38;margin:18px 0}.hero p{font-size:17px;color:var(--muted);max-width:600px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:49px;padding:9px 22px;border-radius:12px;font-weight:800;font-size:14px}.primary{background:var(--blue);color:white}.secondary{border:1px solid var(--blue);color:var(--blue);background:white}.button:hover{transform:translateY(-2px)}.hero-art{height:390px;border-radius:40px;background:linear-gradient(150deg,#1a5b8b,#288d85);position:relative;overflow:hidden;box-shadow:0 25px 65px #143e5a25}.hero-art:after{content:'';position:absolute;width:130%;height:170px;background:#f7fbf6;bottom:-115px;left:-15%;border-radius:50%}.sun{position:absolute;inset-inline-end:55px;top:48px;width:155px;height:155px;border-radius:50%;background:#ffffff25}.bridge{position:absolute;inset:100px 50px auto;display:flex;justify-content:space-around;align-items:end;border:15px solid #e4f4ed;border-bottom:0;border-radius:220px 220px 0 0;height:175px;z-index:2}.bridge span{height:130px;width:18px;background:#e4f4ed;border-radius:12px}.bridge span:nth-child(2){height:160px}.art-label{position:absolute;bottom:35px;inset-inline-start:35px;color:white;z-index:3;font-size:38px;font-weight:800;letter-spacing:.07em}.art-label i{color:#b5eacc;font-style:normal}.values{border-bottom:1px solid var(--line)}.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-block:25px}.values-grid div{display:flex;flex-direction:column;align-items:center;text-align:center}.values-grid strong{color:var(--blue);font-size:18px}.values-grid span{color:var(--muted);font-size:13px}.section{padding-block:90px}.soft{background:var(--soft)}.split{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}h2{font-size:clamp(27px,3vw,39px);line-height:1.5;margin:10px 0 20px}p{margin-top:0}.split p,.section-head p{font-size:16px;color:var(--muted)}.text-link{font-weight:800;color:var(--blue)}.section-head{margin-bottom:30px;max-width:680px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.feature{padding:28px 23px;border:1px solid var(--line);border-radius:var(--radius);background:white}.symbol{font-size:34px;color:var(--green)}h3{margin:12px 0;font-size:19px}.feature p{font-size:14px;color:var(--muted);line-height:1.8}.highlight{display:flex;align-items:center;gap:25px;padding:30px;border:1px solid var(--line);border-radius:var(--radius)}.highlight-icon{display:grid;place-items:center;width:90px;height:90px;flex-shrink:0;border-radius:18px;color:var(--green);font-size:50px;background:#e6f5ed}.highlight h3{margin:0 0 5px}.highlight p{color:var(--muted);margin:0}.empty-news{border:2px dashed #b8cbd8;border-radius:var(--radius);padding:32px;text-align:center;color:var(--muted)}.empty-news span{color:var(--green);font-size:40px}.join-panel{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:48px 55px;border-radius:26px;background:linear-gradient(110deg,var(--blue),#287e83);color:white}.join-panel h2{max-width:620px}.join-panel p{max-width:720px;color:#e5f0f3}.light{color:#b3f0d8}.white{background:white;color:var(--blue);white-space:nowrap}.contact-box{padding:26px;border:1px solid var(--line);border-radius:var(--radius)}.contact-box p:last-child{margin:0}.footer{background:#102f4b;color:white;padding:37px 0}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}.footer p{margin:3px 0;color:#c6d7e3;font-size:13px}
+html[lang=fr] .hero h1{letter-spacing:-.035em}html[lang=fr] .nav a{font-size:12px}
+@media(max-width:1080px){.nav{gap:11px}.nav a{font-size:11px}.brand{min-width:220px}.cards{grid-template-columns:repeat(2,1fr)}}@media(max-width:820px){.header-inner{flex-wrap:wrap;min-height:74px;padding-block:10px}.brand{flex:1}.menu-button{display:block;order:2}.lang{order:1}.nav{display:none;order:3;width:100%;flex-direction:column;align-items:stretch;margin:0;padding:12px 0;border-top:1px solid var(--line)}.nav.open{display:flex}.nav a{font-size:15px;padding:8px}.hero-grid,.split{grid-template-columns:1fr;gap:20px}.hero-grid{padding-block:30px}.hero-copy{padding:20px 0}.hero-art{height:280px}.section{padding-block:60px}.join-panel{padding:35px;flex-direction:column;align-items:stretch}.footer-inner{align-items:flex-start;flex-direction:column}}@media(max-width:560px){.container{width:min(100% - 28px,1160px)}.brand-text strong{font-size:12px}.brand-text small{font-size:9px}.brand-mark{height:44px;width:44px}.hero h1{font-size:32px}.hero p{font-size:15px}.hero-art{height:240px}.bridge{inset:65px 30px auto;height:130px}.bridge span{height:90px}.bridge span:nth-child(2){height:110px}.values-grid{gap:7px}.values-grid strong{font-size:15px}.values-grid span{font-size:11px}.cards{grid-template-columns:1fr}.highlight{align-items:flex-start;flex-direction:column}.join-panel{padding:28px}.section{padding-block:48px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button:hover{transform:none}}
+/* Jisr refined interface: typography, association brand, accessible spacing */
+:root{--blue:#0d59ac;--blue2:#0b468e;--green:#4a9b35;--ink:#18354e;--muted:#607385;--soft:#f7fafd;--line:#dde7ee}
+body{font-size:14px;line-height:1.8}
+.header-inner{min-height:76px;gap:16px}
+.brand{min-width:240px}.brand-mark{width:45px;height:45px;font-size:25px;background:linear-gradient(140deg,#0055ad,#4a9b35)}
+.brand-text strong{font-size:13px}.brand-text small{font-size:9px}
+.nav{gap:15px}.nav a{font-size:12px}.lang{font-size:12px}
+.hero-grid{min-height:475px;gap:40px}.hero-copy{padding-block:48px}
+.hero h1{font-size:clamp(30px,3.35vw,45px);line-height:1.45}
+.hero p{font-size:15px;line-height:1.85}
+.hero-art{height:335px;background:linear-gradient(140deg,#0a58a9,#1473b6 55%,#5ba632)}
+.eyebrow,.section-tag{font-size:12px}.button{font-size:12px;min-height:43px}
+.section{padding-block:70px}.section-head{margin-bottom:24px}
+h2{font-size:clamp(24px,2.5vw,32px)}
+h3,.feature h3{font-size:16px}.feature p,.highlight p,.empty-news,.contact-box p{font-size:13px}
+.feature{padding:23px 19px}.symbol{font-size:28px}
+.split p,.section-head p{font-size:14px}.values-grid strong{font-size:16px}.values-grid span{font-size:12px}
+.join-panel h2{font-size:clamp(24px,2.5vw,32px)}
+.join-panel p{font-size:14px}
+@media(max-width:820px){.hero-grid{min-height:0}.hero-art{height:260px}.hero-copy{padding-block:20px}.section{padding-block:48px}}
+
+/* Official Jisr logo and simplified editorial hero */
+.brand-logo{width:128px;height:auto;object-fit:contain;flex-shrink:0}
+.brand{min-width:260px;gap:9px}.brand-text strong{font-size:12px}
+.hero-art{background:linear-gradient(135deg,#f1f7fe 0%,#eaf5f1 100%);border:1px solid #dce8f1;box-shadow:0 18px 42px #153d5b12;display:flex;align-items:center;justify-content:center}
+.hero-art:after,.sun,.bridge{display:none}
+.hero-official-logo{position:relative;z-index:2;width:min(92%,400px);background:white;padding:25px 15px;border-radius:20px;box-shadow:0 12px 30px #1b527915}
+.hero-official-logo img{display:block;width:100%;height:auto;image-rendering:auto}
+.art-label{color:var(--blue);font-size:22px;bottom:21px;inset-inline-start:27px}
+@media(max-width:1080px){.brand-logo{width:110px}.brand{min-width:210px}}
+@media(max-width:560px){.brand-logo{width:90px}.brand{min-width:0}.brand-text strong{font-size:11px}.brand-text small{font-size:8px}.hero-official-logo{padding:18px 12px}}
+
+/* Keep the original logo's intrinsic 793:213 ratio; never crop or stretch. */
+.brand-logo,.hero-official-logo img{width:100%;height:auto;max-width:100%;object-fit:contain;object-position:center;aspect-ratio:auto;image-rendering:auto}
+.brand-logo{width:min(100%,165px);max-height:none;flex:0 0 auto}
+.hero-official-logo{width:min(96%,590px);max-width:590px;box-shadow:none;padding:20px;background:#fff}
+.hero-official-logo img{display:block;width:100%;height:auto}
+.hero-art{min-height:290px;height:auto;padding:24px}
+@media(max-width:560px){.brand-logo{width:100px}.hero-art{min-height:200px;padding:12px}.hero-official-logo{padding:8px}}
+
+/* Official original lockup. The full 1672 × 941 canvas stays visible. */
+:root{--blue:#094c98;--blue2:#123d75;--green:#318b34;--ink:#17314d;--muted:#52677a;--line:#dbe5ee;--soft:#f5f9fc}
+html{scroll-padding-top:130px}
+body{font-size:14px;line-height:1.85}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.header-inner{min-height:116px;gap:18px}
+.brand{min-width:0;flex:0 0 auto}
+.brand-logo{display:block;width:205px;height:auto;max-width:100%;max-height:none;object-fit:contain}
+.nav{gap:16px;margin-inline-start:auto}
+.hero{background:linear-gradient(120deg,#f8fbfe,#edf5f7);border-bottom:1px solid var(--line)}
+.hero-grid{min-height:0;grid-template-columns:1fr 1fr;gap:35px;padding-block:43px}
+.hero-copy{padding:0;max-width:540px}
+.hero h1{font-size:clamp(30px,3.15vw,43px);line-height:1.43}
+.hero-art{height:auto;min-height:0;padding:0;display:block;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:none}
+.hero-art:after,.art-label{display:none}
+.hero-official-logo{display:block;width:100%;max-width:none;padding:0;border-radius:0;box-shadow:none;background:#fff}
+.hero-official-logo img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain}
+.section{padding-block:70px}
+.feature{border-radius:15px}
+.join-panel{background:var(--blue2);border-radius:18px}
+.button{border-radius:9px;transition:background .2s ease}
+.button:hover{transform:none}
+.primary:hover{background:var(--blue2)}
+.empty-news{border:1px solid var(--line);background:white;text-align:start;padding:22px 26px}
+.empty-news span{font-size:24px}
+.empty-news p{display:inline;margin-inline-start:12px}
+@media(max-width:1100px){.brand-logo{width:175px}.nav{gap:10px}.nav a{font-size:11px}}
+@media(max-width:820px){.header-inner{min-height:94px;gap:12px}.brand-logo{width:165px}.hero-grid{grid-template-columns:1fr;gap:14px;padding-block:35px}.hero-copy{padding:0;max-width:100%}.hero-art{width:100%;max-width:680px;margin-inline:auto}.section{padding-block:52px}}
+@media(max-width:560px){.header-inner{min-height:80px}.brand-logo{width:143px}.hero h1{font-size:29px}.hero p{font-size:14px}.hero-art{height:auto;min-height:0;padding:0}.hero-official-logo{width:100%;padding:0}.section{padding-block:48px}}
+
+/* Keep the supplied image complete while limiting its display size. */
+.brand-logo{width:180px;height:auto;max-width:100%}
+.hero-art{padding:18px}
+.hero-official-logo{width:min(100%,480px);margin-inline:auto}
+.hero-official-logo img{width:100%;height:auto}
+@media(max-width:820px){.brand-logo{width:155px}}
+@media(max-width:560px){.brand-logo{width:135px}.hero-art{padding:8px}}
+
