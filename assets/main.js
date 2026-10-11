@@ -12,13 +12,18 @@ function setLanguage(lang){
  document.querySelector('.brand').setAttribute('aria-label',lang==='ar'?'الصفحة الرئيسية، جمعية جسر الطفولة والشباب':'Accueil, Association Jisr');
  document.querySelector('.hero-official-logo img').alt=lang==='ar'?'الشعار الرسمي لجمعية جسر الطفولة والشباب':'Logo officiel de l’Association Jisr pour l’Enfance et la Jeunesse';
  document.title=lang==='ar'?'جمعية جسر الطفولة والشباب | Association Jisr':'Association Jisr pour l’Enfance et la Jeunesse';
- const url=new URL(location.href);url.searchParams.set('lang',lang);history.replaceState(null,'',url);
+ const description=document.querySelector('meta[name="description"]');
+ if(description)description.content=lang==='ar'
+  ?'الموقع الرسمي لجمعية جسر الطفولة والشباب بالمغرب، فضاء للتربية والتكوين والتطوع.'
+  :'Site officiel de l’Association Jisr pour l’Enfance et la Jeunesse au Maroc : éducation, formation et bénévolat.';
  try{localStorage.setItem('jisr-language',lang)}catch(e){}
 }
-langButton.addEventListener('click',()=>setLanguage(document.documentElement.lang==='ar'?'fr':'ar'));
+langButton.addEventListener('click',()=>{const next=document.documentElement.lang==='ar'?'fr':'ar';location.assign('/'+next+'/'+location.hash)});
 menu.addEventListener('click',()=>{const opened=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(opened))});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}});
 document.getElementById('year').textContent=String(new Date().getFullYear());
-let initial=new URLSearchParams(location.search).get('lang');if(!translations[initial]){try{initial=localStorage.getItem('jisr-language')||'ar'}catch(e){initial='ar'}}setLanguage(initial);
+let initial=document.documentElement.lang;
+if(location.pathname==='/'){const requested=new URLSearchParams(location.search).get('lang');if(translations[requested])initial=requested}
+setLanguage(initial);
 
