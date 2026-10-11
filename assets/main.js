@@ -7,11 +7,18 @@ function setLanguage(lang){
  document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
  document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;if(translations[lang][key])el.textContent=translations[lang][key]});
  langButton.textContent=lang==='ar'?'FR':'العربية';langButton.setAttribute('aria-label',lang==='ar'?'Passer en français':'التبديل إلى العربية');
+ menu.setAttribute('aria-label',lang==='ar'?'القائمة الرئيسية':'Menu principal');
+ nav.setAttribute('aria-label',lang==='ar'?'التنقل الرئيسي':'Navigation principale');
+ document.querySelector('.brand').setAttribute('aria-label',lang==='ar'?'الصفحة الرئيسية، جمعية جسر الطفولة والشباب':'Accueil, Association Jisr');
+ document.querySelector('.hero-official-logo img').alt=lang==='ar'?'الشعار الرسمي لجمعية جسر الطفولة والشباب':'Logo officiel de l’Association Jisr pour l’Enfance et la Jeunesse';
  document.title=lang==='ar'?'جمعية جسر الطفولة والشباب | Association Jisr':'Association Jisr pour l’Enfance et la Jeunesse';
+ const url=new URL(location.href);url.searchParams.set('lang',lang);history.replaceState(null,'',url);
  try{localStorage.setItem('jisr-language',lang)}catch(e){}
 }
 langButton.addEventListener('click',()=>setLanguage(document.documentElement.lang==='ar'?'fr':'ar'));
 menu.addEventListener('click',()=>{const opened=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(opened))});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}});
 document.getElementById('year').textContent=String(new Date().getFullYear());
-let initial='ar';try{initial=localStorage.getItem('jisr-language')||'ar'}catch(e){}setLanguage(initial);
+let initial=new URLSearchParams(location.search).get('lang');if(!translations[initial]){try{initial=localStorage.getItem('jisr-language')||'ar'}catch(e){initial='ar'}}setLanguage(initial);
+
