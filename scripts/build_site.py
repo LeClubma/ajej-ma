@@ -156,7 +156,7 @@ def activities(lang: str) -> str:
     else:
         hero = page_hero(lang, "Activités et actualités", "Quand les idées deviennent des rencontres.", "Retrouvez les activités annoncées, leurs dates, leurs lieux et les informations utiles pour y participer.", "Activités")
         card = f'''<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">À l’agenda</span><h2>Notre prochaine activité</h2></div></div><article class="listing-card"><a class="listing-image" href="{url(lang,EVENT)}" aria-label="Détails de l’Université des jeunes"><img src="/assets/youth-university-2026.webp" alt="Affiche de l’Université des jeunes" width="1414" height="2000"></a><div class="listing-body"><span class="status-pill">20–24 octobre 2026 · Saïdia</span><h3>Université des jeunes</h3><p>Une rencontre pour les 18–35 ans au Centre national de camping de Saïdia, sous le thème « Les colonies éducatives : une nouvelle vision pour façonner la vie ».</p><dl><div><dt>Lieu</dt><dd>Saïdia</dd></div><div><dt>Public</dt><dd>18–35 ans</dd></div></dl>{a(lang,EVENT,'Voir l’annonce complète ↗','btn btn-primary')}</div></article></div></section>'''
-    return hero + card + cta(lang)
+    return hero + card
 
 
 def participate(lang: str) -> str:
