@@ -21,8 +21,8 @@ COPY = {
         "notice": "النشاط المقبل", "notice_title": "جامعة الشباب", "notice_date": "20–24 أكتوبر 2026", "notice_link": "تفاصيل النشاط",
         "pages": {
             "home": ("الرئيسية", "جمعية جسر الطفولة والشباب: مبادرات تربوية وثقافية وتطوعية، وأنشطة للطفولة والشباب في المغرب."),
-            "about": ("من نحن", "تعرّف إلى جمعية جسر الطفولة والشباب ورسالتها ومقاربتها ومقرها الوطني بمكناس."),
-            "programs": ("مجالات العمل", "التربية والتكوين، الطفولة والتخييم، الشباب والتطوع، الثقافة والمواطنة: مجالات عمل جمعية جسر."),
+            "about": ("من نحن", "تعرّف إلى تأسيس جمعية جسر الطفولة والشباب وتاريخ اسمها ورسالتها التربوية ومقرها الوطني بمكناس."),
+            "programs": ("مجالات العمل", "أهداف جمعية جسر: التربية والتخييم والشباب، دعم التعلم والنساء والفتيات، الرياضة والتضامن والشراكات."),
             "activities": ("الأنشطة", "تابع أنشطة جمعية جسر الطفولة والشباب، ومنها جامعة الشباب من 20 إلى 24 أكتوبر 2026 بالسعيدية."),
             "participate": ("شارك معنا", "تعرّف إلى طرق المشاركة في أنشطة جمعية جسر: التطوع، الانخراط والتعاون."),
             "contact": ("تواصل", "معلومات التواصل المتاحة لجمعية جسر الطفولة والشباب ولنشاط جامعة الشباب."),
@@ -39,8 +39,8 @@ COPY = {
         "notice": "À venir", "notice_title": "Université des jeunes", "notice_date": "20–24 octobre 2026", "notice_link": "Voir l’activité",
         "pages": {
             "home": ("Accueil", "Association Jisr pour l’Enfance et la Jeunesse : initiatives éducatives, culturelles et bénévoles au Maroc."),
-            "about": ("L’association", "Découvrez la mission, la démarche et le siège national à Meknès de l’Association Jisr pour l’Enfance et la Jeunesse."),
-            "programs": ("Nos domaines", "Éducation, enfance et colonies, engagement des jeunes, culture et citoyenneté : les domaines d’action de Jisr."),
+            "about": ("L’association", "Découvrez la création, l’évolution du nom et la mission éducative de l’Association Jisr, dont le siège national est à Meknès."),
+            "programs": ("Nos domaines", "Les objectifs de Jisr : éducation, enfance et jeunesse, soutien scolaire, femmes et filles, sport, solidarité et coopération."),
             "activities": ("Activités", "Découvrez les activités de Jisr, notamment l’Université des jeunes du 20 au 24 octobre 2026 à Saïdia."),
             "participate": ("S’engager", "Découvrez les façons de participer aux activités de Jisr : bénévolat, adhésion et coopération."),
             "contact": ("Contact", "Les coordonnées disponibles pour l’Association Jisr et l’Université des jeunes."),
@@ -98,7 +98,7 @@ def layout(lang: str, page: str, body: str) -> str:
 <meta property="og:type" content="website"><meta property="og:site_name" content="Association Jisr"><meta property="og:title" content="{escape(title, quote=True)} | {escape(t['short'], quote=True)}"><meta property="og:description" content="{escape(description, quote=True)}"><meta property="og:image" content="{image}"><meta property="og:url" content="{current}">
 <title>{escape(title)} | {escape(t['short'])}</title>
 <link rel="canonical" href="{current}"><link rel="alternate" hreflang="ar" href="https://ajej.ma{url('ar', page)}"><link rel="alternate" hreflang="fr" href="https://ajej.ma{url('fr', page)}"><link rel="alternate" hreflang="x-default" href="https://ajej.ma{url('ar', page)}">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site-2026-hero.css"><script defer src="/assets/site-2026.js"></script>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site-2026-statute.css"><script defer src="/assets/site-2026.js"></script>
 </head><body>{header(lang, page)}<main id="main">{body}</main>{footer(lang)}</body></html>'''
 
 
@@ -133,7 +133,11 @@ def about(lang: str) -> str:
     else:
         hero = page_hero(lang, "L’association · depuis 2019", "Se rencontrer pour ouvrir des possibles.", "Nous croyons que l’éducation et la participation donnent aux enfants et aux jeunes les moyens de découvrir, de s’exprimer et d’agir.", "L’association")
         body = '''<section class="section"><div class="wrap editorial-grid"><div><span class="eyebrow">Notre identité</span><h2>Un pont entre les capacités et les possibilités.</h2></div><div class="editorial-copy"><p>Fondée en 2019, l’Association Jisr pour l’Enfance et la Jeunesse est une association marocaine dont le siège national est à Meknès. Elle place l’enfance et la jeunesse au centre d’initiatives éducatives, culturelles et participatives.</p><p>Nous aspirons à des espaces où les enfants peuvent explorer et apprendre, et où les jeunes peuvent initier des projets aux côtés d’autres acteurs.</p></div></div></section><section class="section pale-section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">Ce qui nous guide</span><h2>Des principes à mettre en pratique.</h2></div></div><div class="principles"><article><span>01</span><h3>Écouter d’abord</h3><p>Partir des intérêts des enfants et des jeunes et des besoins de leur environnement.</p></article><article><span>02</span><h3>Apprendre ensemble</h3><p>Donner une place à l’expérience et au collectif dans les activités éducatives.</p></article><article><span>03</span><h3>Coopérer</h3><p>Construire les initiatives avec les bénévoles, les acteurs et les partenaires.</p></article></div></div></section><section class="section"><div class="wrap editorial-grid"><div><span class="eyebrow">Notre ancrage</span><h2>Un siège à Meknès, des initiatives au-delà d’une seule ville.</h2></div><div class="editorial-copy"><p>Le siège national de l’association se trouve à Meknès et une section existe à Midelt. Les activités et collaborations peuvent dépasser le cadre d’une seule ville ou section, selon chaque initiative.</p><p>Nos domaines associent éducation et formation, enfance et colonies, initiative des jeunes, culture et citoyenneté.</p>'''+a(lang,'programs','Explorer nos domaines ↗','text-action')+'''</div></div></section>'''
-    return hero + body + cta(lang)
+    if lang == "ar":
+        roots = '''<section class="section pale-section"><div class="wrap editorial-grid"><div><span class="eyebrow">جذور الجمعية</span><h2>من التأسيس إلى اسم جسر.</h2></div><div class="editorial-copy"><p>تأسست الجمعية يوم 19 أكتوبر 2019 باسم «وسيط الخير للتربية والتنمية». وفي المؤتمر الوطني المنعقد بمكناس يوم 20 غشت 2024 اعتمدت اسم «جمعية جسر الطفولة والشباب»، مواكبةً لاتساع مجالات عملها مع الأطفال والشباب.</p><p>يصفها قانونها الأساسي بأنها جمعية تربوية تنموية تطوعية، غير ربحية ومستقلة عن الأحزاب السياسية والهيئات النقابية. مقرها الوطني بمدينة مكناس.</p></div></div></section>'''
+    else:
+        roots = '''<section class="section pale-section"><div class="wrap editorial-grid"><div><span class="eyebrow">Nos origines</span><h2>De la création au nom Jisr.</h2></div><div class="editorial-copy"><p>Créée le 19 octobre 2019 sous le nom <span lang="ar" dir="rtl">«وسيط الخير للتربية والتنمية»</span>, l’association a adopté celui d’« Association Jisr pour l’Enfance et la Jeunesse » lors de son congrès national tenu à Meknès le 20 août 2024, en accord avec l’élargissement de ses champs d’action.</p><p>Ses statuts la définissent comme une association éducative, de développement et de bénévolat, sans but lucratif et indépendante des partis politiques et des organisations syndicales. Son siège national est à Meknès.</p></div></div></section>'''
+    return hero + body + roots + cta(lang)
 
 
 def programs(lang: str) -> str:
@@ -146,7 +150,11 @@ def programs(lang: str) -> str:
         cards = [("01", "Éducation et formation", "Des apprentissages pour la vie.", "Ateliers et activités pour développer les compétences, la créativité et la coopération. L’expérience et la pratique y ont toute leur place."), ("02", "Enfance et colonies", "Un espace pour découvrir.", "Activités éducatives, loisirs et expériences collectives qui soutiennent la confiance en soi, le respect et la vie en groupe."), ("03", "Jeunesse et bénévolat", "Les jeunes acteurs du changement.", "Espaces d’initiative, d’accompagnement et de bénévolat où les jeunes peuvent proposer des idées et contribuer à les réaliser."), ("04", "Culture et citoyenneté", "L’expression crée des liens.", "Rencontres, créativité et participation citoyenne pour donner aux enfants et aux jeunes une place dans le dialogue.")]
         after = '<section class="section pale-section"><div class="wrap editorial-grid"><div><span class="eyebrow">Des domaines aux activités</span><h2>Chaque activité, une occasion de se rencontrer.</h2></div><div class="editorial-copy"><p>Ces domaines prennent la forme de rencontres, d’ateliers, de colonies et d’initiatives portées ou partagées par les jeunes. Retrouvez les détails de l’activité annoncée actuellement.</p>'+a(lang,'activities','Voir les activités ↗','text-action')+'</div></div></section>'
     content = ''.join(f'<article class="program-row"><span class="program-number">{n}</span><div><span class="eyebrow">{kicker}</span><h2>{title}</h2></div><p>{description}</p></article>' for n,title,kicker,description in cards)
-    return hero + f'<section class="section"><div class="wrap program-list">{content}</div></section>' + after + cta(lang)
+    if lang == "ar":
+        statutory = '''<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">من أهداف القانون الأساسي</span><h2>مجالات أخرى تتقاطع مع رسالتنا.</h2></div><p>تحدد هذه الأهداف اتجاه عمل الجمعية، وتتحول إلى أنشطة بحسب البرامج والشراكات المتاحة.</p></div><div class="principles"><article><span>01 / التعليم</span><h3>مساندة المسار الدراسي</h3><p>المساهمة في الحد من الهدر المدرسي، ودعم تكامل دور الأسرة والمدرسة، وتنمية مواهب الأطفال والشباب.</p></article><article><span>02 / التمكين</span><h3>النساء والفتيات</h3><p>دعم التعلم ومحو الأمية والتكوين، وتشجيع المبادرات التي توسع فرص النساء والفتيات.</p></article><article><span>03 / المجتمع</span><h3>الرياضة والسلامة والتضامن</h3><p>الأنشطة الرياضية والتوعية بالسلامة الطرقية والإسعافات الأولية، والمبادرات التضامنية والصحية.</p></article></div></div></section>'''
+    else:
+        statutory = '''<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">Objectifs inscrits dans les statuts</span><h2>D’autres champs liés à notre mission.</h2></div><p>Ces objectifs orientent l’action de l’association et peuvent prendre forme selon les programmes et partenariats disponibles.</p></div><div class="principles"><article><span>01 / Éducation</span><h3>Soutenir le parcours scolaire</h3><p>Contribuer à la lutte contre le décrochage scolaire, renforcer les liens entre famille et école et développer les talents des enfants et des jeunes.</p></article><article><span>02 / Autonomie</span><h3>Femmes et filles</h3><p>Soutenir l’apprentissage, l’alphabétisation et la formation, ainsi que les initiatives qui élargissent leurs possibilités.</p></article><article><span>03 / Communauté</span><h3>Sport, sécurité et solidarité</h3><p>Promouvoir les activités sportives, la sensibilisation à la sécurité routière et aux premiers secours, et les initiatives solidaires et de santé.</p></article></div></div></section>'''
+    return hero + f'<section class="section"><div class="wrap program-list">{content}</div></section>' + statutory + after + cta(lang)
 
 
 def activities(lang: str) -> str:
@@ -169,7 +177,11 @@ def participate(lang: str) -> str:
         ways = [("01", "Être bénévole", "Offrez du temps et des compétences pour l’animation, l’organisation ou les activités de terrain selon les besoins des initiatives."), ("02", "Adhérer", "Participez à la vie associative et proposez des idées en lien avec les domaines de l’association."), ("03", "Coopérer", "Vous représentez une institution ou une association ? Des actions communes peuvent réunir éducation, enfance et jeunesse.")]
         note = '<section class="section pale-section"><div class="wrap editorial-grid"><div><span class="eyebrow">Une occasion actuelle</span><h2>L’Université des jeunes, du 20 au 24 octobre.</h2></div><div class="editorial-copy"><p>L’annonce actuelle s’adresse aux 18–35 ans. Sa page présente le lieu et les numéros dédiés aux renseignements sur la participation à cette activité.</p>'+a(lang,EVENT,'Détails de l’activité ↗','text-action')+'</div></div></section>'
     cards = ''.join(f'<article class="way-card"><span>{n}</span><h2>{title}</h2><p>{body}</p></article>' for n,title,body in ways)
-    return hero + f'<section class="section"><div class="wrap ways-grid">{cards}</div></section>' + note + cta(lang)
+    if lang == "ar":
+        membership = '''<div class="membership-note"><h2>الانخراط في الجمعية</h2><p>ينص القانون الأساسي على أعضاء نشيطين يشاركون بانتظام في عمل الجمعية، وأعضاء شرفيين يساندون أهدافها. يُدرس طلب الانخراط من طرف المكتب المختص وفق شروط العضوية، ولا تُعد الرغبة في المشاركة قبولاً تلقائياً للعضوية.</p></div>'''
+    else:
+        membership = '''<div class="membership-note"><h2>Adhérer à l’association</h2><p>Les statuts distinguent les membres actifs, qui participent régulièrement à la vie associative, et les membres d’honneur, qui soutiennent sa mission. Une demande d’adhésion est étudiée par le bureau compétent selon les conditions statutaires ; manifester son intérêt ne vaut pas admission automatique.</p></div>'''
+    return hero + f'<section class="section"><div class="wrap ways-grid">{cards}</div><div class="wrap">{membership}</div></section>' + note + cta(lang)
 
 
 def contact(lang: str) -> str:
