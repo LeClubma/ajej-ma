@@ -1,5 +1,20 @@
 /* The activity journal and evidence page share a restrained editorial rhythm. */
 [hidden]{display:none!important}
+.enrollment-topline{background:#176c55}
+.enrollment-teaser{background:#f1f8f3;border-bottom:1px solid #d7e9db}
+.enrollment-teaser-inner{display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:20px;align-items:center;padding-block:14px}
+.enrollment-teaser img{display:block;width:78px;height:96px;object-fit:cover;border-radius:9px;border:1px solid #d8e5df}
+.enrollment-teaser h2{font-size:clamp(20px,2.1vw,27px);color:var(--navy);margin:3px 0}
+.enrollment-teaser p{font-size:13px;color:var(--muted);margin:0;line-height:1.6}
+.enrollment-teaser .btn{white-space:nowrap}
+.enrollment-listing{background:#f5f9f7}
+.enrollment-poster img{object-fit:contain!important;background:#f2f7f5}
+.enrollment-join{background:#f5f9f7}
+.enrollment-join-box{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:25px 30px;background:#fff;border:1px solid #d8e7dd;border-inline-start:4px solid var(--green);border-radius:15px}
+.enrollment-join h2{font-size:clamp(23px,2.4vw,30px);margin:7px 0}
+.enrollment-join p{color:var(--muted);font-size:14px;margin:0}
+.enrollment-join .btn{flex:0 0 auto}
+.enrollment-explainer{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:14px;line-height:1.8}
 .event-archive-note{background:#fff8e9;border:1px solid #eed7aa;border-inline-start:4px solid #d49228;border-radius:11px;color:#604817;padding:13px 18px;margin-top:18px;font-size:14px;font-weight:700}
 .event-past .footer-grid{grid-template-columns:1.3fr .75fr}
 .area-card{display:block;text-decoration:none}
@@ -38,6 +53,11 @@
   .site-nav a{padding:9px 0;font-size:14px;border-bottom:1px solid #edf1f3}
 }
 @media(max-width:760px){
+  .enrollment-teaser-inner{grid-template-columns:68px 1fr;gap:12px}
+  .enrollment-teaser img{width:68px;height:87px}
+  .enrollment-teaser .btn{grid-column:2;justify-self:start;min-height:39px;padding:6px 14px}
+  .enrollment-join-box{display:block}
+  .enrollment-join .btn{margin-top:15px}
   .evidence-layout,.impact-intro{grid-template-columns:1fr;gap:24px}
   .evidence-grid{grid-template-columns:1fr;gap:10px}
   .evidence-grid article{padding:19px}

@@ -10,6 +10,7 @@ import json
 
 ROOT = Path(__file__).resolve().parents[1]
 EVENT = "activities/youth-university-2026"
+ENROLLMENT = "activities/midelt-enrollment-2026"
 
 COPY = {
     "ar": {
@@ -25,7 +26,8 @@ COPY = {
             "home": ("الرئيسية", "جمعية جسر الطفولة والشباب: مبادرات تربوية وثقافية وتطوعية، وأنشطة للطفولة والشباب في المغرب."),
             "about": ("من نحن", "تعرّف إلى تأسيس جمعية جسر الطفولة والشباب وتاريخ اسمها ورسالتها التربوية ومقرها الوطني بمكناس."),
             "programs": ("مجالات العمل", "أهداف جمعية جسر: التربية والتخييم والشباب، دعم التعلم والنساء والفتيات، الرياضة والتضامن والشراكات."),
-            "activities": ("الأنشطة", "تابع أنشطة جمعية جسر الطفولة والشباب، ومنها جامعة الشباب من 20 إلى 24 أكتوبر 2026 بالسعيدية."),
+            "activities": ("الأنشطة", "إعلان لقاء الانخراط بفرع ميدلت يوم 17 أكتوبر 2026 وجامعة الشباب بالسعيدية من 20 إلى 24 أكتوبر 2026."),
+            ENROLLMENT: ("فتح باب الانخراط بفرع ميدلت", "إعلان فرع ميدلت لجمعية جسر: لقاء تواصلي لفتح باب الانخراط السبت 17 أكتوبر 2026 الساعة 16:30 بدار الشباب ابن خلدون بميدلت."),
             "impact": ("الأثر والشفافية", "كيف توثق جمعية جسر الطفولة والشباب أنشطتها ونتائجها، وما المعلومات المنشورة حالياً."),
             "participate": ("شارك معنا", "تعرّف إلى طرق المشاركة في أنشطة جمعية جسر: التطوع، الانخراط والتعاون."),
             "contact": ("تواصل", "معلومات التواصل المتاحة لجمعية جسر الطفولة والشباب ولنشاط جامعة الشباب."),
@@ -44,7 +46,8 @@ COPY = {
             "home": ("Accueil", "Association Jisr pour l’Enfance et la Jeunesse : initiatives éducatives, culturelles et bénévoles au Maroc."),
             "about": ("L’association", "Découvrez la création, l’évolution du nom et la mission éducative de l’Association Jisr, dont le siège national est à Meknès."),
             "programs": ("Nos domaines", "Les objectifs de Jisr : éducation, enfance et jeunesse, soutien scolaire, femmes et filles, sport, solidarité et coopération."),
-            "activities": ("Activités", "Découvrez les activités de Jisr, notamment l’Université des jeunes du 20 au 24 octobre 2026 à Saïdia."),
+            "activities": ("Activités", "Rencontre d’adhésion de la section de Midelt le 17 octobre 2026 et Université des jeunes à Saïdia du 20 au 24 octobre 2026."),
+            ENROLLMENT: ("Adhésion à la section de Midelt", "Annonce de la section de Midelt de l’Association Jisr : rencontre d’information sur l’adhésion le samedi 17 octobre 2026 à 16 h 30 à la Maison des jeunes Ibn Khaldoun de Midelt."),
             "impact": ("Impact et transparence", "Découvrez comment Jisr documente ses activités et leurs résultats, et les informations disponibles aujourd’hui."),
             "participate": ("S’engager", "Découvrez les façons de participer aux activités de Jisr : bénévolat, adhésion et coopération."),
             "contact": ("Contact", "Les coordonnées disponibles pour l’Association Jisr et l’Université des jeunes."),
@@ -119,6 +122,13 @@ def neutralize_schedule(markup: str, lang: str) -> str:
     return markup
 
 
+def enrollment_notice(lang: str) -> str:
+    label = "فرع ميدلت · لقاء الانخراط" if lang == "ar" else "Section de Midelt · Rencontre d’adhésion"
+    date = "السبت 17 أكتوبر · 16:30" if lang == "ar" else "Samedi 17 octobre · 16 h 30"
+    action = "اطلع على الإعلان" if lang == "ar" else "Voir l’annonce"
+    return f'<div class="topline enrollment-topline" data-enrollment-promo><div class="wrap topline-inner"><span>{label} <span class="topline-date">· {date}</span></span>{a(lang, ENROLLMENT, action + " ↗")}</div></div>'
+
+
 def header(lang: str, active: str) -> str:
     t = COPY[lang]
     other = "fr" if lang == "ar" else "ar"
@@ -170,14 +180,48 @@ def event_structured_data(lang: str) -> str:
     return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False).replace("</", "<\\/") + '</script>'
 
 
+def enrollment_structured_data(lang: str) -> str:
+    data = {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "@id": "https://ajej.ma/ar/activities/midelt-enrollment-2026/#event",
+        "name": "لقاء تواصلي لفتح باب الانخراط بفرع ميدلت" if lang == "ar" else "Rencontre d’information sur l’adhésion à Midelt",
+        "description": COPY[lang]["pages"][ENROLLMENT][1],
+        "startDate": "2026-10-17T16:30:00+01:00",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+            "@type": "Place",
+            "name": "دار الشباب ابن خلدون" if lang == "ar" else "Maison des jeunes Ibn Khaldoun",
+            "address": {"@type": "PostalAddress", "addressLocality": "Midelt", "addressCountry": "MA"},
+        },
+        "image": ["https://ajej.ma/assets/midelt-enrollment-2026.webp"],
+        "organizer": {
+            "@type": "Organization",
+            "name": COPY[lang]["name"] + (" – فرع ميدلت" if lang == "ar" else " – section de Midelt"),
+            "url": "https://ajej.ma" + url(lang),
+        },
+        "url": "https://ajej.ma" + url(lang, ENROLLMENT),
+        "inLanguage": lang,
+    }
+    return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False).replace("</", "<\\/") + '</script>'
+
+
 def layout(lang: str, page: str, body: str) -> str:
     t = COPY[lang]
     title, description = t["pages"][page]
     direction = "rtl" if lang == "ar" else "ltr"
     current = "https://ajej.ma" + url(lang, page)
-    image = "https://ajej.ma/assets/youth-university-2026.webp" if page in ("activities", EVENT) else "https://ajej.ma/assets/logo-jisr-original-2026-10.png"
-    structured = event_structured_data(lang) if page == EVENT else ""
-    top = polish_icons(header(lang, page)).replace('<div class="topline">', '<div class="topline" data-event-promo>', 1)
+    image = (
+        "https://ajej.ma/assets/midelt-enrollment-2026.webp" if page == ENROLLMENT else
+        "https://ajej.ma/assets/youth-university-2026.webp" if page in ("activities", EVENT) else
+        "https://ajej.ma/assets/logo-jisr-original-2026-10.png"
+    )
+    structured = event_structured_data(lang) if page == EVENT else enrollment_structured_data(lang) if page == ENROLLMENT else ""
+    top = polish_icons(header(lang, page)).replace(
+        '<div class="topline">',
+        polish_icons(enrollment_notice(lang)) + '<div class="topline" data-event-promo data-secondary-promo>',
+        1,
+    )
     bottom = polish_icons(footer(lang)).replace('<div class="footer-feature">', '<div class="footer-feature" data-event-promo>', 1)
     return f'''<!doctype html>
 <html lang="{lang}" dir="{direction}"><head>
@@ -255,6 +299,18 @@ def _activities_base(lang: str) -> str:
     return hero + card
 
 
+def enrollment_teaser(lang: str) -> str:
+    if lang == "ar":
+        eyebrow, title = "فرع ميدلت · 17 أكتوبر 2026", "لقاء تواصلي لفتح باب الانخراط"
+        body = "السبت على الساعة 16:30 بدار الشباب ابن خلدون بميدلت. تعرّف إلى الإعلان واحضر للاستفسار عن الانخراط."
+        action, alt = "تفاصيل لقاء ميدلت ↗", "ملصق إعلان فتح باب الانخراط بفرع ميدلت"
+    else:
+        eyebrow, title = "Section de Midelt · 17 octobre 2026", "Une rencontre pour découvrir l’adhésion"
+        body = "Samedi à 16 h 30 à la Maison des jeunes Ibn Khaldoun de Midelt. Retrouvez l’annonce et venez vous renseigner sur l’adhésion."
+        action, alt = "Détails de la rencontre ↗", "Affiche de la rencontre d’adhésion de la section de Midelt"
+    return f'<section class="enrollment-teaser" data-enrollment-promo><div class="wrap enrollment-teaser-inner"><img src="/assets/midelt-enrollment-2026.webp" alt="{alt}" width="1122" height="1402" loading="lazy"><div><span class="eyebrow">{eyebrow}</span><h2>{title}</h2><p>{body}</p></div>{a(lang, ENROLLMENT, action, "btn btn-primary")}</div></section>'
+
+
 def home(lang: str) -> str:
     teaser = (
         '<section class="section evidence-section"><div class="wrap evidence-layout"><div>'
@@ -280,13 +336,14 @@ def home(lang: str) -> str:
     base = _home_base(lang)
     base = re.sub(r'<section class="section steps-section">.*?</section>', teaser, base, count=1, flags=re.S)
     cards = iter(range(1, 5))
-    return re.sub(
+    linked = re.sub(
         r'<article class="area-card">(.*?)</article>',
         lambda match: f'<a class="area-card" href="{url(lang, "programs")}#area-{next(cards):02d}">{match.group(1)}</a>',
         base,
         count=4,
         flags=re.S,
     )
+    return linked.replace('<section class="section featured-section">', enrollment_teaser(lang) + '<section class="section featured-section">', 1)
 
 
 def activities(lang: str) -> str:
@@ -299,7 +356,11 @@ def activities(lang: str) -> str:
         listing = listing.replace("<h2>النشاط المقبل</h2>", "<h2 data-event-list-title>النشاط المعلن</h2>")
     else:
         listing = listing.replace("<h2>Notre prochaine activité</h2>", "<h2 data-event-list-title>Activité annoncée</h2>")
-    return listing + note
+    if lang == "ar":
+        enrollment = f'''<section class="section enrollment-listing"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">فرع ميدلت</span><h2>لقاء فتح باب الانخراط</h2></div></div><article class="listing-card"><a class="listing-image enrollment-poster" href="{url(lang, ENROLLMENT)}" aria-label="تفاصيل لقاء الانخراط بفرع ميدلت"><img src="/assets/midelt-enrollment-2026.webp" alt="ملصق فتح باب الانخراط بفرع ميدلت" width="1122" height="1402" loading="lazy"></a><div class="listing-body"><span class="status-pill" data-enrollment-status>إعلان · السبت 17 أكتوبر 2026</span><h3>لقاء تواصلي بدار الشباب ابن خلدون</h3><p>يدعو فرع ميدلت الراغبين في الاستفسار عن الانخراط إلى لقاء تواصلي يوم السبت 17 أكتوبر 2026 على الساعة 16:30 بدار الشباب ابن خلدون بميدلت.</p><dl><div><dt>المكان</dt><dd>ميدلت</dd></div><div><dt>الوقت</dt><dd>16:30</dd></div></dl>{a(lang, ENROLLMENT, 'شاهد الإعلان ↗', 'btn btn-primary')}</div></article></div></section>'''
+    else:
+        enrollment = f'''<section class="section enrollment-listing"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">Section de Midelt</span><h2>Rencontre autour de l’adhésion</h2></div></div><article class="listing-card"><a class="listing-image enrollment-poster" href="{url(lang, ENROLLMENT)}" aria-label="Détails de la rencontre d’adhésion à Midelt"><img src="/assets/midelt-enrollment-2026.webp" alt="Affiche de la rencontre d’adhésion de Midelt" width="1122" height="1402" loading="lazy"></a><div class="listing-body"><span class="status-pill" data-enrollment-status>Annonce · samedi 17 octobre 2026</span><h3>Rencontre à la Maison des jeunes Ibn Khaldoun</h3><p>La section de Midelt invite les personnes souhaitant se renseigner sur l’adhésion à une rencontre le samedi 17 octobre 2026 à 16 h 30 à la Maison des jeunes Ibn Khaldoun de Midelt.</p><dl><div><dt>Lieu</dt><dd>Midelt</dd></div><div><dt>Heure</dt><dd>16 h 30</dd></div></dl>{a(lang, ENROLLMENT, 'Voir l’annonce ↗', 'btn btn-primary')}</div></article></div></section>'''
+    return enrollment + listing + note
 
 
 def impact(lang: str) -> str:
@@ -320,6 +381,16 @@ def impact(lang: str) -> str:
     return hero + intro + method + end + cta(lang)
 
 
+def enrollment_join_callout(lang: str) -> str:
+    if lang == "ar":
+        label, title = "فرصة بفرع ميدلت", "استفسر عن الانخراط في لقاء السبت 17 أكتوبر."
+        body, action = "لقاء تواصلي بدار الشباب ابن خلدون بميدلت، الساعة 16:30. تعرّف إلى تفاصيل الإعلان قبل الحضور.", "تفاصيل لقاء الانخراط ↗"
+    else:
+        label, title = "Section de Midelt", "Renseignez-vous sur l’adhésion le samedi 17 octobre."
+        body, action = "Rencontre à 16 h 30 à la Maison des jeunes Ibn Khaldoun de Midelt. Consultez l’annonce avant de vous rendre sur place.", "Voir l’annonce d’adhésion ↗"
+    return f'<section class="section enrollment-join" data-enrollment-promo><div class="wrap enrollment-join-box"><div><span class="eyebrow">{label}</span><h2>{title}</h2><p>{body}</p></div>{a(lang, ENROLLMENT, action, "btn btn-primary")}</div></section>'
+
+
 def participate(lang: str) -> str:
     if lang == "ar":
         hero = page_hero(lang, "كن جزءاً من الجسر", "لكل مساهمة مكان، ولكل مبادرة بداية.", "يمكن للشباب والمهتمين بالتربية والشركاء أن يساهموا بطرق مختلفة وفق الأنشطة المتاحة.", "شارك معنا")
@@ -335,7 +406,7 @@ def participate(lang: str) -> str:
     else:
         membership = '''<div class="membership-note"><h2>Adhérer à l’association</h2><p>Les statuts distinguent les membres actifs, qui participent régulièrement à la vie associative, et les membres d’honneur, qui soutiennent sa mission. Une demande d’adhésion est étudiée par le bureau compétent selon les conditions statutaires ; manifester son intérêt ne vaut pas admission automatique.</p></div>'''
     note = note.replace('<section class="section pale-section">', '<section class="section pale-section" data-event-promo>', 1)
-    return hero + f'<section class="section"><div class="wrap ways-grid">{cards}</div><div class="wrap">{membership}</div></section>' + note + cta(lang)
+    return hero + f'<section class="section"><div class="wrap ways-grid">{cards}</div><div class="wrap">{membership}</div></section>' + enrollment_join_callout(lang) + note + cta(lang)
 
 
 def contact(lang: str) -> str:
@@ -374,13 +445,34 @@ def event(lang: str) -> str:
     return hero + archive_note + details
 
 
+def enrollment(lang: str) -> str:
+    if lang == "ar":
+        hero = page_hero(lang, "إعلان فرع ميدلت · 17 أكتوبر 2026", "لقاء تواصلي لفتح باب الانخراط.", "يدعو فرع ميدلت المهتمين إلى اللقاء بدار الشباب ابن خلدون يوم السبت على الساعة 16:30.", "فتح باب الانخراط")
+        title, alt = "معلومات اللقاء", "إعلان فرع ميدلت لفتح باب الانخراط: السبت 17 أكتوبر 2026، 16:30، دار الشباب ابن خلدون"
+        fields = [("التاريخ", "السبت 17 أكتوبر 2026"), ("الوقت", "16:30"), ("المكان", "دار الشباب ابن خلدون بميدلت"), ("الجهة المعلنة", "جمعية جسر الطفولة والشباب · فرع ميدلت")]
+        note = "يدعو الملصق إلى حضور لقاء تواصلي للاستفسار عن الانخراط. المشاركة في اللقاء لا تعني قبول العضوية تلقائياً؛ تُدرس طلبات الانخراط وفق شروط الجمعية."
+        past = "انتهى موعد اللقاء المعلن. تحفظ هذه الصفحة نص الإعلان وملصقه، ولا تفترض انعقاد اللقاء أو قبول طلبات انخراط."
+        label, caption, back = "إعلان الفرع", "الملصق الأصلي لفتح باب الانخراط بفرع ميدلت", "طرق المشاركة في الجمعية ↗"
+    else:
+        hero = page_hero(lang, "Annonce de la section de Midelt · 17 octobre 2026", "Une rencontre pour découvrir l’adhésion.", "La section de Midelt invite les personnes intéressées à la Maison des jeunes Ibn Khaldoun, samedi à 16 h 30.", "Adhésion à Midelt")
+        title, alt = "Informations pratiques", "Affiche de la section de Midelt : rencontre sur l’adhésion samedi 17 octobre 2026 à 16 h 30"
+        fields = [("Date", "Samedi 17 octobre 2026"), ("Heure", "16 h 30"), ("Lieu", "Maison des jeunes Ibn Khaldoun, Midelt"), ("Organisateur", "Association Jisr · section de Midelt")]
+        note = "L’affiche invite à une rencontre d’information sur l’adhésion. Y assister ne vaut pas admission automatique ; toute demande est examinée selon les conditions de l’association."
+        past = "La date annoncée est passée. Cette page conserve l’affiche initiale, sans présumer que la rencontre a eu lieu ni qu’une adhésion a été acceptée."
+        label, caption, back = "Annonce de la section", "Affiche originale de la rencontre d’adhésion à Midelt", "Comment participer à l’association ↗"
+    data = "".join(f'<div><dt>{key}</dt><dd>{value}</dd></div>' for key, value in fields)
+    archive = f'<div class="wrap event-archive-note" data-enrollment-archive-note hidden role="status">{past}</div>'
+    details = f'''<section class="section"><div class="wrap event-layout"><figure class="event-poster"><img src="/assets/midelt-enrollment-2026.webp" width="1122" height="1402" alt="{alt}"><figcaption>{caption}</figcaption></figure><div class="event-side"><span class="eyebrow">{label}</span><h2>{title}</h2><dl class="event-data">{data}</dl><p class="enrollment-explainer">{note}</p>{a(lang, "participate", back, "text-action")}</div></div></section>'''
+    return hero + archive + details
+
+
 def cta(lang: str) -> str:
     if lang == "ar":
         return f'<section class="section join-section"><div class="wrap join-box"><div><span class="eyebrow">ابق قريباً من أنشطتنا</span><h2>اكتشف ما يحدث الآن، <em>وشارك بطريقتك.</em></h2></div>{a(lang,"activities","الأنشطة المعلنة ↗","btn btn-light")}</div></section>'
     return f'<section class="section join-section"><div class="wrap join-box"><div><span class="eyebrow">Suivre nos activités</span><h2>Découvrez ce qui se passe, <em>participez à votre façon.</em></h2></div>{a(lang,"activities","Les activités ↗","btn btn-light")}</div></section>'
 
 
-BUILDERS = {"home": home, "about": about, "programs": programs, "activities": activities, "impact": impact, "participate": participate, "contact": contact, EVENT: event}
+BUILDERS = {"home": home, "about": about, "programs": programs, "activities": activities, "impact": impact, "participate": participate, "contact": contact, EVENT: event, ENROLLMENT: enrollment}
 
 
 def main() -> None:

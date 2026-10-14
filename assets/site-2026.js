@@ -28,6 +28,17 @@ const moroccoDateParts = new Intl.DateTimeFormat('en-GB', {
 }).formatToParts(new Date());
 const moroccoDate = Object.fromEntries(moroccoDateParts.map(part => [part.type, part.value]));
 const todayInMorocco = [moroccoDate.year, moroccoDate.month, moroccoDate.day].join('-');
+if (todayInMorocco <= '2026-10-17') {
+  // The Midelt meeting is the nearest announcement; keep one top strip visible.
+  document.querySelectorAll('[data-secondary-promo]').forEach(element => { element.hidden = true; });
+} else {
+  document.querySelectorAll('[data-enrollment-promo]').forEach(element => { element.hidden = true; });
+  const enrollmentArchive = document.querySelector('[data-enrollment-archive-note]');
+  if (enrollmentArchive) enrollmentArchive.hidden = false;
+  const enrollmentStatus = document.querySelector('[data-enrollment-status]');
+  if (enrollmentStatus) enrollmentStatus.textContent =
+    document.documentElement.lang === 'ar' ? 'إعلان سابق · 17 أكتوبر 2026' : 'Annonce passée · 17 octobre 2026';
+}
 if (todayInMorocco > '2026-10-24') {
   document.documentElement.classList.add('event-past');
   document.querySelectorAll('[data-event-promo]').forEach(element => { element.hidden = true; });
