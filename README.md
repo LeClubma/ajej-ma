@@ -12,6 +12,13 @@ distincte, avec son affiche et ses informations pratiques. Elle ne doit pas
 être présentée comme une annonce nationale.
 Une page « Impact et transparence » distingue les annonces des bilans
 documentés, en arabe et en français.
+Le journal des activités présente cinq événements documentés par les
+publications publiques de la section de Midelt en 2026 : la soirée coranique,
+la deuxième rencontre « Maharat », la sortie à Ifrane, la réunion avec les
+familles des campeurs et la colonie de Ras Rmel. Chaque notice lie la
+publication originale. Il ne suppose ni effectifs ni impact mesuré. Une
+annonce ancienne de colonie à Taza n'est pas présentée comme une réalisation
+sans publication confirmant sa tenue.
 La page dédiée à l'Université des jeunes comprend des données structurées
 Event limitées aux faits publiés (dates sans horaires, lieu et affiche).
 Après le 24 octobre 2026, le script masque les promotions de participation

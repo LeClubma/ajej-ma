@@ -26,7 +26,7 @@ COPY = {
             "home": ("الرئيسية", "جمعية جسر الطفولة والشباب: مبادرات تربوية وثقافية وتطوعية، وأنشطة للطفولة والشباب في المغرب."),
             "about": ("من نحن", "تعرّف إلى تأسيس جمعية جسر الطفولة والشباب وتاريخ اسمها ورسالتها التربوية ومقرها الوطني بمكناس."),
             "programs": ("مجالات العمل", "أهداف جمعية جسر: التربية والتخييم والشباب، دعم التعلم والنساء والفتيات، الرياضة والتضامن والشراكات."),
-            "activities": ("الأنشطة", "إعلان لقاء الانخراط بفرع ميدلت يوم 17 أكتوبر 2026 وجامعة الشباب بالسعيدية من 20 إلى 24 أكتوبر 2026."),
+            "activities": ("الأنشطة", "سجل موثق لأنشطة فرع ميدلت المنفذة سنة 2026، وإعلان لقاء الانخراط وجامعة الشباب."),
             ENROLLMENT: ("فتح باب الانخراط بفرع ميدلت", "إعلان فرع ميدلت لجمعية جسر: لقاء تواصلي لفتح باب الانخراط السبت 17 أكتوبر 2026 الساعة 16:30 بدار الشباب ابن خلدون بميدلت."),
             "impact": ("الأثر والشفافية", "كيف توثق جمعية جسر الطفولة والشباب أنشطتها ونتائجها، وما المعلومات المنشورة حالياً."),
             "participate": ("شارك معنا", "تعرّف إلى طرق المشاركة في أنشطة جمعية جسر: التطوع، الانخراط والتعاون."),
@@ -46,7 +46,7 @@ COPY = {
             "home": ("Accueil", "Association Jisr pour l’Enfance et la Jeunesse : initiatives éducatives, culturelles et bénévoles au Maroc."),
             "about": ("L’association", "Découvrez la création, l’évolution du nom et la mission éducative de l’Association Jisr, dont le siège national est à Meknès."),
             "programs": ("Nos domaines", "Les objectifs de Jisr : éducation, enfance et jeunesse, soutien scolaire, femmes et filles, sport, solidarité et coopération."),
-            "activities": ("Activités", "Rencontre d’adhésion de la section de Midelt le 17 octobre 2026 et Université des jeunes à Saïdia du 20 au 24 octobre 2026."),
+            "activities": ("Activités", "Retrouvez les activités documentées de la section de Midelt, sa rencontre d’adhésion annoncée le 17 octobre 2026 et l’Université des jeunes à Saïdia."),
             ENROLLMENT: ("Adhésion à la section de Midelt", "Annonce de la section de Midelt de l’Association Jisr : rencontre d’information sur l’adhésion le samedi 17 octobre 2026 à 16 h 30 à la Maison des jeunes Ibn Khaldoun de Midelt."),
             "impact": ("Impact et transparence", "Découvrez comment Jisr documente ses activités et leurs résultats, et les informations disponibles aujourd’hui."),
             "participate": ("S’engager", "Découvrez les façons de participer aux activités de Jisr : bénévolat, adhésion et coopération."),
@@ -343,14 +343,77 @@ def home(lang: str) -> str:
         count=4,
         flags=re.S,
     )
-    return linked.replace('<section class="section featured-section">', enrollment_teaser(lang) + '<section class="section featured-section">', 1)
+    linked = linked.replace('<section class="section featured-section">', enrollment_teaser(lang) + '<section class="section featured-section">', 1)
+    return linked.replace('<section class="section about-band">', midelt_home_journal(lang) + '<section class="section about-band">', 1)
+
+
+# Public posts from the Midelt section. These are brief descriptions of what the
+# posts document, not claims about attendance, outcomes, or a complete season.
+MIDELT_RECORDS = [
+    {
+        "id": "larache-camp", "kind": "camp", "date": "2026-07", "source": "122140672449127741",
+        "ar": ("يوليوز 2026", "مخيم رأس الرمل بالعرائش", "وثقت الصفحة انطلاق أنشطة المخيم الصيفي برأس الرمل في العرائش للأطفال المشاركين من فرع ميدلت.", "تخييم تربوي"),
+        "fr": ("Juillet 2026", "Colonie de Ras Rmel à Larache", "La page a documenté le début des activités de la colonie de Ras Rmel à Larache avec les enfants inscrits par la section de Midelt.", "Colonie éducative"),
+    },
+    {
+        "id": "camp-families", "kind": "family", "date": "2026-06-27", "source": "122140114023127741",
+        "ar": ("27 يونيو 2026", "لقاء مع أولياء المشاركين في المخيم", "لقاء تواصلي بدار الشباب ابن خلدون بميدلت مع آباء وأولياء الأطفال المسجلين في مخيم رأس الرمل.", "تواصل مع الأسر"),
+        "fr": ("27 juin 2026", "Rencontre avec les familles des campeurs", "Rencontre d’information à la Maison des jeunes Ibn Khaldoun de Midelt avec les parents des enfants inscrits à la colonie de Ras Rmel.", "Lien avec les familles"),
+    },
+    {
+        "id": "ifrane-trip", "kind": "trip", "date": "2026-04-26", "source": "122132988681127741",
+        "ar": ("26 أبريل 2026", "رحلة تربوية إلى إفران", "رحلة استكشافية وترفيهية عبر آزرو وميشليفن إلى مدينة إفران، تخللتها أنشطة وألعاب جماعية.", "رحلة تربوية"),
+        "fr": ("26 avril 2026", "Sortie éducative à Ifrane", "Sortie de découverte et de loisirs vers Ifrane, en passant par Azrou et Michlifen, avec des activités collectives.", "Sortie éducative"),
+    },
+    {
+        "id": "maharat-2", "kind": "skills", "date": "2026-04-04", "source": "122129932659127741",
+        "ar": ("4 أبريل 2026", "اللقاء الثاني من سلسلة «مهارات»", "نظم الفرع لقاءً لفائدة أطره التربوية بدار الشباب ابن خلدون بميدلت حول المهارات الحياتية وبناء القدرات.", "تكوين الأطر"),
+        "fr": ("4 avril 2026", "Deuxième rencontre « Maharat »", "La section a réuni ses animateurs à la Maison des jeunes Ibn Khaldoun de Midelt autour des compétences de vie et du développement des capacités.", "Formation des animateurs"),
+    },
+    {
+        "id": "ramadan-evening", "kind": "culture", "date": "2026-03-07", "source": "122125596351127741",
+        "ar": ("7 مارس 2026", "أمسية قرآنية رمضانية", "أمسية قرآنية ومسابقة في تجويد القرآن الكريم بدار الشباب ابن خلدون بميدلت، وثقت الصفحة تنظيمها.", "نشاط ثقافي"),
+        "fr": ("7 mars 2026", "Soirée coranique du Ramadan", "Soirée coranique et concours de récitation à la Maison des jeunes Ibn Khaldoun de Midelt, dont la tenue a été documentée sur la page.", "Activité culturelle"),
+    },
+]
+
+
+def midelt_home_journal(lang: str) -> str:
+    if lang == "ar":
+        eyebrow, title = "من سجل فرع ميدلت", "أنشطة من الميدان."
+        lead, action = "مخيمات ولقاءات ورحلات وثقتها منشورات الفرع، مع روابط المصادر وتواريخ الأنشطة.", "تصفح سجل الأنشطة ↗"
+    else:
+        eyebrow, title = "Carnet de la section de Midelt", "Des activités sur le terrain."
+        lead, action = "Colonies, rencontres et sorties documentées par les publications de la section, avec leurs dates et sources.", "Parcourir les activités ↗"
+    cards = "".join(
+        f'<a class="journal-preview" href="{url(lang,"activities")}#midelt-{record["id"]}"><span>{record[lang][0]}</span><h3>{record[lang][1]}</h3><span class="journal-arrow" aria-hidden="true">{icon("arrow")}</span></a>'
+        for record in (MIDELT_RECORDS[0], MIDELT_RECORDS[2], MIDELT_RECORDS[3])
+    )
+    return f'<section class="section journal-home"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">{eyebrow}</span><h2>{title}</h2></div><p>{lead}</p></div><div class="journal-preview-grid">{cards}</div>{a(lang,"activities",action,"text-action centered-action")}</div></section>'
+
+
+def midelt_journal(lang: str) -> str:
+    if lang == "ar":
+        eyebrow, title = "سجل فرع ميدلت · 2026", "أنشطة وثّقها الفرع."
+        lead = "محطات منشورة على صفحة الفرع. تلخص البطاقات ما تؤكده المنشورات، وتتيح الرجوع إلى المصدر الأصلي؛ لا تتضمن أرقام مشاركة أو حصيلة أثر غير منشورة."
+        source, note = "اقرأ المنشور الأصلي", "المصدر: صفحة جمعية جسر الطفولة والشباب – فرع ميدلت على فيسبوك"
+    else:
+        eyebrow, title = "Section de Midelt · 2026", "Activités documentées."
+        lead = "Des activités publiées sur la page de la section. Chaque notice renvoie à sa source ; aucun effectif ou résultat non publié n’est avancé."
+        source, note = "Voir la publication", "Source : page Facebook de l’Association Jisr – section de Midelt"
+    cards = []
+    for record in MIDELT_RECORDS:
+        date, heading, description, category = record[lang]
+        link = f'https://www.facebook.com/AssociationJisr/posts/{record["source"]}/'
+        cards.append(f'<article class="journal-card" id="midelt-{record["id"]}"><div class="journal-card-top"><span class="journal-symbol journal-{record["kind"]}" aria-hidden="true">{icon("tent" if record["kind"] == "camp" else "people" if record["kind"] == "family" else "spark" if record["kind"] == "trip" else "book" if record["kind"] == "skills" else "dialogue")}</span><span class="journal-category">{category}</span></div><time datetime="{record["date"]}">{date}</time><h3>{heading}</h3><p>{description}</p><a href="{link}" target="_blank" rel="noopener noreferrer" aria-label="{source}: {heading}">{source} {icon("arrow", "action-icon")}</a></article>')
+    return f'<section class="section midelt-journal" id="midelt-journal"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">{eyebrow}</span><h2>{title}</h2></div><p>{lead}</p></div><div class="journal-grid">{"".join(cards)}</div><p class="journal-source-note">{note}</p></div></section>'
 
 
 def activities(lang: str) -> str:
     if lang == "ar":
-        note = '<section class="section pale-section"><div class="wrap editorial-grid"><div><span class="eyebrow">سجل الأنشطة</span><h2>الإعلان بداية القصة.</h2></div><div class="editorial-copy"><p>تعرض هذه الصفحة إعلان جامعة الشباب. وستُضاف حصيلة موثقة بعد التنفيذ عند توفرها؛ فالإعلان لا يمثل تقريراً عن النتائج.</p>' + a(lang, "impact", "كيف نعرض حصيلة الأنشطة ↗", "text-action") + '</div></div></section>'
+        note = '<section class="section pale-section"><div class="wrap editorial-grid"><div><span class="eyebrow">سجل الأنشطة</span><h2>من الإعلان إلى التوثيق.</h2></div><div class="editorial-copy"><p>نميز بين منشورات توثق أنشطة فرع ميدلت المنجزة وبين إعلاني لقاء الانخراط وجامعة الشباب. وتضاف حصائل مفصلة عند توفر معلومات مثبتة، دون افتراض أعداد المشاركين أو نتائج لم تُنشر.</p>' + a(lang, "impact", "كيف نعرض حصيلة الأنشطة ↗", "text-action") + '</div></div></section>'
     else:
-        note = '<section class="section pale-section"><div class="wrap editorial-grid"><div><span class="eyebrow">Journal des activités</span><h2>Une annonce ouvre le récit.</h2></div><div class="editorial-copy"><p>Cette page présente l’annonce de l’Université des jeunes. Un bilan documenté sera ajouté après sa réalisation, lorsque les éléments seront disponibles.</p>' + a(lang, "impact", "Comment nous présentons les bilans ↗", "text-action") + '</div></div></section>'
+        note = '<section class="section pale-section"><div class="wrap editorial-grid"><div><span class="eyebrow">Journal des activités</span><h2>Des annonces aux traces publiées.</h2></div><div class="editorial-copy"><p>Nous distinguons les publications documentant les activités tenues par la section de Midelt des annonces de la rencontre d’adhésion et de l’Université des jeunes. Des bilans détaillés pourront être ajoutés quand des données vérifiées seront disponibles.</p>' + a(lang, "impact", "Comment nous présentons les bilans ↗", "text-action") + '</div></div></section>'
     listing = _activities_base(lang)
     if lang == "ar":
         listing = listing.replace("<h2>النشاط المقبل</h2>", "<h2 data-event-list-title>النشاط المعلن</h2>")
@@ -360,19 +423,19 @@ def activities(lang: str) -> str:
         enrollment = f'''<section class="section enrollment-listing"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">فرع ميدلت</span><h2>لقاء فتح باب الانخراط</h2></div></div><article class="listing-card"><a class="listing-image enrollment-poster" href="{url(lang, ENROLLMENT)}" aria-label="تفاصيل لقاء الانخراط بفرع ميدلت"><img src="/assets/midelt-enrollment-2026.webp" alt="ملصق فتح باب الانخراط بفرع ميدلت" width="1122" height="1402" loading="lazy"></a><div class="listing-body"><span class="status-pill" data-enrollment-status>إعلان · السبت 17 أكتوبر 2026</span><h3>لقاء تواصلي بدار الشباب ابن خلدون</h3><p>يدعو فرع ميدلت الراغبين في الاستفسار عن الانخراط إلى لقاء تواصلي يوم السبت 17 أكتوبر 2026 على الساعة 16:30 بدار الشباب ابن خلدون بميدلت.</p><dl><div><dt>المكان</dt><dd>ميدلت</dd></div><div><dt>الوقت</dt><dd>16:30</dd></div></dl>{a(lang, ENROLLMENT, 'شاهد الإعلان ↗', 'btn btn-primary')}</div></article></div></section>'''
     else:
         enrollment = f'''<section class="section enrollment-listing"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">Section de Midelt</span><h2>Rencontre autour de l’adhésion</h2></div></div><article class="listing-card"><a class="listing-image enrollment-poster" href="{url(lang, ENROLLMENT)}" aria-label="Détails de la rencontre d’adhésion à Midelt"><img src="/assets/midelt-enrollment-2026.webp" alt="Affiche de la rencontre d’adhésion de Midelt" width="1122" height="1402" loading="lazy"></a><div class="listing-body"><span class="status-pill" data-enrollment-status>Annonce · samedi 17 octobre 2026</span><h3>Rencontre à la Maison des jeunes Ibn Khaldoun</h3><p>La section de Midelt invite les personnes souhaitant se renseigner sur l’adhésion à une rencontre le samedi 17 octobre 2026 à 16 h 30 à la Maison des jeunes Ibn Khaldoun de Midelt.</p><dl><div><dt>Lieu</dt><dd>Midelt</dd></div><div><dt>Heure</dt><dd>16 h 30</dd></div></dl>{a(lang, ENROLLMENT, 'Voir l’annonce ↗', 'btn btn-primary')}</div></article></div></section>'''
-    return enrollment + listing + note
+    return enrollment + listing + midelt_journal(lang) + note
 
 
 def impact(lang: str) -> str:
     if lang == "ar":
         hero = page_hero(lang, "الأثر والشفافية", "نُظهر ما نعرفه، ونوثّق ما ننجزه.", "نميز بين أهداف الجمعية، والأنشطة المعلنة، والنتائج التي تُنشر بعد التحقق منها.", "الأثر والشفافية")
-        intro = '<section class="section"><div class="wrap impact-intro"><div><span class="eyebrow">المتاح حالياً</span><h2>معلومات واضحة دون أرقام افتراضية.</h2><p>يوثق الموقع تأسيس الجمعية ومجالاتها، ويعرض إعلان جامعة الشباب المقرر من 20 إلى 24 أكتوبر 2026 في السعيدية. لم تُنشر حصيلة لهذا النشاط بعد؛ ولا نعرض أهداف الجمعية باعتبارها نتائج ميدانية.</p></div><article class="record-card"><span class="record-label">إعلان منشور</span><h3>جامعة الشباب · السعيدية</h3><p>التاريخ، المكان، الفئة المعنية، الملصق وأرقام الاستفسار.</p><span class="record-status">حصيلة التنفيذ: لم تُنشر بعد</span>' + a(lang, EVENT, "عرض الإعلان ↗", "text-action") + '</article></div></section>'
+        intro = '<section class="section"><div class="wrap impact-intro"><div><span class="eyebrow">المتاح حالياً</span><h2>معلومات واضحة دون أرقام افتراضية.</h2><p>يوثق الموقع أنشطة فرع ميدلت المنشورة سنة 2026 بروابط مصادرها، ويعرض إعلاني لقاء الانخراط وجامعة الشباب. نشر النشاط لا يكفي وحده لإثبات عدد المستفيدين أو قياس الأثر؛ ولم تُنشر بعد حصيلة لجامعة الشباب.</p>' + a(lang, "activities", "اطلع على سجل فرع ميدلت ↗", "text-action") + '</div><article class="record-card"><span class="record-label">إعلان منشور</span><h3>جامعة الشباب · السعيدية</h3><p>التاريخ، المكان، الفئة المعنية، الملصق وأرقام الاستفسار.</p><span class="record-status">حصيلة التنفيذ: لم تُنشر بعد</span>' + a(lang, EVENT, "عرض الإعلان ↗", "text-action") + '</article></div></section>'
         cards = [("01 / التنفيذ", "ما الذي جرى؟", "الموعد الفعلي، المكان، الأنشطة والشركاء بعد التأكد من التنفيذ."), ("02 / المشاركة", "من شارك؟", "الفئات المستفيدة وأعداد المشاركين حين تتوفر بيانات دقيقة ومسموح بنشرها."), ("03 / التعلم", "ما الذي تحقق؟", "المخرجات والتقييم أو شهادات المشاركين بموافقتهم، مع توضيح حدود ما تثبته.")]
         end = '<section class="section"><div class="wrap editorial-grid"><div><span class="eyebrow">الخصوصية والمسؤولية</span><h2>نوثق الأنشطة باحترام المشاركين.</h2></div><div class="editorial-copy"><p>عند نشر القصص والصور، نراعي الموافقات اللازمة وخصوصية الأطفال. كما نميز بين عدد المشاركين وبين التغير الذي يمكن إثباته.</p><p>ستُضاف التقارير والمواد المعتمدة عندما تتوفر، مع بيان تاريخ النشاط ومصدر المعلومات.</p>' + a(lang, "about", "تعرف إلى الجمعية ↗", "text-action") + '</div></div></section>'
         eyebrow, title, lead = "طريقتنا", "ما الذي نذكره في الحصيلة؟", "معلومات قابلة للتحقق، تميز بين المخطط والمنفذ."
     else:
         hero = page_hero(lang, "Impact et transparence", "Dire ce que nous savons, documenter ce que nous faisons.", "Une distinction claire entre objectifs, activités annoncées et résultats vérifiés.", "Impact et transparence")
-        intro = '<section class="section"><div class="wrap impact-intro"><div><span class="eyebrow">Aujourd’hui</span><h2>Des faits sans chiffres supposés.</h2><p>Le site présente la création et les domaines de l’association, ainsi que l’annonce de l’Université des jeunes prévue du 20 au 24 octobre 2026 à Saïdia. Aucun bilan de cette activité n’est encore publié ; les objectifs ne sont pas présentés comme des résultats.</p></div><article class="record-card"><span class="record-label">Annonce publiée</span><h3>Université des jeunes · Saïdia</h3><p>Dates, lieu, public concerné, affiche et numéros de renseignement.</p><span class="record-status">Bilan : pas encore publié</span>' + a(lang, EVENT, "Voir l’annonce ↗", "text-action") + '</article></div></section>'
+        intro = '<section class="section"><div class="wrap impact-intro"><div><span class="eyebrow">Aujourd’hui</span><h2>Des faits sans chiffres supposés.</h2><p>Le site référence les activités de la section de Midelt documentées en 2026 et les annonces de la rencontre d’adhésion et de l’Université des jeunes. Les publications ne suffisent pas à établir des effectifs ni à mesurer un impact ; aucun bilan de l’Université des jeunes n’est encore publié.</p>' + a(lang, "activities", "Consulter le journal de Midelt ↗", "text-action") + '</div><article class="record-card"><span class="record-label">Annonce publiée</span><h3>Université des jeunes · Saïdia</h3><p>Dates, lieu, public concerné, affiche et numéros de renseignement.</p><span class="record-status">Bilan : pas encore publié</span>' + a(lang, EVENT, "Voir l’annonce ↗", "text-action") + '</article></div></section>'
         cards = [("01 / Réalisation", "Qu’a-t-on fait ?", "Dates réelles, lieu, activités et partenaires après confirmation."), ("02 / Participation", "Qui a participé ?", "Publics et effectifs lorsque les données sont fiables et publiables."), ("03 / Apprentissage", "Qu’a-t-on obtenu ?", "Productions, évaluations ou témoignages recueillis avec accord, en précisant leurs limites.")]
         end = '<section class="section"><div class="wrap editorial-grid"><div><span class="eyebrow">Vie privée et responsabilité</span><h2>Documenter dans le respect des participants.</h2></div><div class="editorial-copy"><p>Les récits et images sont publiés avec les autorisations nécessaires, en protégeant particulièrement la vie privée des enfants. Un effectif ne suffit pas à établir un impact.</p><p>Les comptes rendus validés seront ajoutés avec la date de l’activité et la source des informations.</p>' + a(lang, "about", "Découvrir l’association ↗", "text-action") + '</div></div></section>'
         eyebrow, title, lead = "Notre méthode", "Que contient un bilan ?", "Des faits vérifiables qui distinguent le prévu du réalisé."
