@@ -230,7 +230,7 @@ def layout(lang: str, page: str, body: str) -> str:
 <meta property="og:type" content="website"><meta property="og:site_name" content="Association Jisr"><meta property="og:title" content="{escape(title, quote=True)} | {escape(t['short'], quote=True)}"><meta property="og:description" content="{escape(description, quote=True)}"><meta property="og:image" content="{image}"><meta property="og:url" content="{current}">
 <title>{escape(title)} | {escape(t['short'])}</title>
 <link rel="canonical" href="{current}"><link rel="alternate" hreflang="ar" href="https://ajej.ma{url('ar', page)}"><link rel="alternate" hreflang="fr" href="https://ajej.ma{url('fr', page)}"><link rel="alternate" hreflang="x-default" href="https://ajej.ma{url('ar', page)}">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site-2026-compact.css"><link rel="stylesheet" href="/assets/site-2026-impact.css"><script defer src="/assets/site-2026.js"></script>{structured}
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site-2026-compact.css"><link rel="stylesheet" href="/assets/site-2026-impact.css?v=20261014-midelt"><script defer src="/assets/site-2026.js"></script>{structured}
 </head><body>{top}<main id="main">{polish_icons(neutralize_schedule(body, lang))}</main>{bottom}</body></html>'''
 
 
