@@ -14,16 +14,17 @@ COPY = {
         "name": "جمعية جسر الطفولة والشباب",
         "short": "جمعية جسر",
         "tagline": "جسور للطفولة والشباب",
-        "nav": [("من نحن", "about"), ("مجالات العمل", "programs"), ("الأنشطة", "activities"), ("شارك معنا", "participate"), ("تواصل", "contact")],
+        "nav": [("من نحن", "about"), ("مجالات العمل", "programs"), ("الأنشطة", "activities"), ("الأثر والشفافية", "impact"), ("شارك معنا", "participate"), ("تواصل", "contact")],
         "home": "الرئيسية", "lang": "Français", "skip": "تجاوز إلى المحتوى", "menu": "فتح القائمة", "close": "إغلاق القائمة",
         "footer_text": "فضاء للتربية والمبادرة والمشاركة، من أجل طفولة وشباب يملكان فرصاً أوسع.",
-        "footer_place": "المقر الوطني · مكناس، المغرب", "footer_event": "نشاطنا المقبل", "footer_more": "اكتشف النشاط", "footer_rights": "جميع الحقوق محفوظة",
-        "notice": "النشاط المقبل", "notice_title": "جامعة الشباب", "notice_date": "20–24 أكتوبر 2026", "notice_link": "تفاصيل النشاط",
+        "footer_place": "المقر الوطني · مكناس، المغرب", "footer_event": "إعلان نشاط", "footer_more": "اكتشف النشاط", "footer_rights": "جميع الحقوق محفوظة",
+        "notice": "إعلان نشاط", "notice_title": "جامعة الشباب", "notice_date": "20–24 أكتوبر 2026", "notice_link": "تفاصيل النشاط",
         "pages": {
             "home": ("الرئيسية", "جمعية جسر الطفولة والشباب: مبادرات تربوية وثقافية وتطوعية، وأنشطة للطفولة والشباب في المغرب."),
             "about": ("من نحن", "تعرّف إلى تأسيس جمعية جسر الطفولة والشباب وتاريخ اسمها ورسالتها التربوية ومقرها الوطني بمكناس."),
             "programs": ("مجالات العمل", "أهداف جمعية جسر: التربية والتخييم والشباب، دعم التعلم والنساء والفتيات، الرياضة والتضامن والشراكات."),
             "activities": ("الأنشطة", "تابع أنشطة جمعية جسر الطفولة والشباب، ومنها جامعة الشباب من 20 إلى 24 أكتوبر 2026 بالسعيدية."),
+            "impact": ("الأثر والشفافية", "كيف توثق جمعية جسر الطفولة والشباب أنشطتها ونتائجها، وما المعلومات المنشورة حالياً."),
             "participate": ("شارك معنا", "تعرّف إلى طرق المشاركة في أنشطة جمعية جسر: التطوع، الانخراط والتعاون."),
             "contact": ("تواصل", "معلومات التواصل المتاحة لجمعية جسر الطفولة والشباب ولنشاط جامعة الشباب."),
             EVENT: ("جامعة الشباب", "جامعة الشباب من 20 إلى 24 أكتوبر 2026 بالمركز الوطني للتخييم بالسعيدية، لفائدة الشباب من 18 إلى 35 سنة."),
@@ -32,16 +33,17 @@ COPY = {
     "fr": {
         "name": "Association Jisr pour l’Enfance et la Jeunesse",
         "short": "Association Jisr", "tagline": "Des passerelles pour grandir et agir",
-        "nav": [("L’association", "about"), ("Nos domaines", "programs"), ("Activités", "activities"), ("S’engager", "participate"), ("Contact", "contact")],
+        "nav": [("L’association", "about"), ("Nos domaines", "programs"), ("Activités", "activities"), ("Impact et transparence", "impact"), ("S’engager", "participate"), ("Contact", "contact")],
         "home": "Accueil", "lang": "العربية", "skip": "Aller au contenu", "menu": "Ouvrir le menu", "close": "Fermer le menu",
         "footer_text": "Un espace d’éducation, d’initiative et de participation pour ouvrir de nouvelles perspectives aux enfants et aux jeunes.",
-        "footer_place": "Siège national · Meknès, Maroc", "footer_event": "À venir", "footer_more": "Découvrir l’activité", "footer_rights": "Tous droits réservés",
-        "notice": "À venir", "notice_title": "Université des jeunes", "notice_date": "20–24 octobre 2026", "notice_link": "Voir l’activité",
+        "footer_place": "Siège national · Meknès, Maroc", "footer_event": "Activité annoncée", "footer_more": "Découvrir l’activité", "footer_rights": "Tous droits réservés",
+        "notice": "Activité annoncée", "notice_title": "Université des jeunes", "notice_date": "20–24 octobre 2026", "notice_link": "Voir l’activité",
         "pages": {
             "home": ("Accueil", "Association Jisr pour l’Enfance et la Jeunesse : initiatives éducatives, culturelles et bénévoles au Maroc."),
             "about": ("L’association", "Découvrez la création, l’évolution du nom et la mission éducative de l’Association Jisr, dont le siège national est à Meknès."),
             "programs": ("Nos domaines", "Les objectifs de Jisr : éducation, enfance et jeunesse, soutien scolaire, femmes et filles, sport, solidarité et coopération."),
             "activities": ("Activités", "Découvrez les activités de Jisr, notamment l’Université des jeunes du 20 au 24 octobre 2026 à Saïdia."),
+            "impact": ("Impact et transparence", "Découvrez comment Jisr documente ses activités et leurs résultats, et les informations disponibles aujourd’hui."),
             "participate": ("S’engager", "Découvrez les façons de participer aux activités de Jisr : bénévolat, adhésion et coopération."),
             "contact": ("Contact", "Les coordonnées disponibles pour l’Association Jisr et l’Université des jeunes."),
             EVENT: ("Université des jeunes", "Université des jeunes du 20 au 24 octobre 2026 au Centre national de camping de Saïdia, pour les 18 à 35 ans."),
@@ -80,6 +82,27 @@ def polish_icons(markup: str) -> str:
     markup = markup.replace('<b>✦</b>', icon("spark", "ticker-icon"))
     markup = markup.replace('<span aria-hidden="true">↗</span>', icon("arrow", "action-icon"))
     markup = markup.replace(' ↗<', ' ' + icon("arrow", "action-icon") + '<')
+    return markup
+
+
+def neutralize_schedule(markup: str, lang: str) -> str:
+    """Keep dated announcements accurate even after their advertised date."""
+    replacements = {
+        "ar": {
+            "النشاط المقبل": "النشاط المعلن",
+            "نشاط قريب": "نشاط معلن",
+            "فرصة حالية": "نشاط معلن",
+            "المتاح الآن": "المعلن",
+        },
+        "fr": {
+            "Notre prochaine activité": "Activité annoncée",
+            "Une occasion actuelle": "Une activité annoncée",
+            "À venir ·": "Activité annoncée ·",
+            "l’activité annoncée actuellement": "l’activité annoncée",
+        },
+    }
+    for old, new in replacements[lang].items():
+        markup = markup.replace(old, new)
     return markup
 
 
@@ -123,8 +146,8 @@ def layout(lang: str, page: str, body: str) -> str:
 <meta property="og:type" content="website"><meta property="og:site_name" content="Association Jisr"><meta property="og:title" content="{escape(title, quote=True)} | {escape(t['short'], quote=True)}"><meta property="og:description" content="{escape(description, quote=True)}"><meta property="og:image" content="{image}"><meta property="og:url" content="{current}">
 <title>{escape(title)} | {escape(t['short'])}</title>
 <link rel="canonical" href="{current}"><link rel="alternate" hreflang="ar" href="https://ajej.ma{url('ar', page)}"><link rel="alternate" hreflang="fr" href="https://ajej.ma{url('fr', page)}"><link rel="alternate" hreflang="x-default" href="https://ajej.ma{url('ar', page)}">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site-2026-compact.css"><script defer src="/assets/site-2026.js"></script>
-</head><body>{polish_icons(header(lang, page))}<main id="main">{polish_icons(body)}</main>{polish_icons(footer(lang))}</body></html>'''
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site-2026-compact.css"><link rel="stylesheet" href="/assets/site-2026-impact.css"><script defer src="/assets/site-2026.js"></script>
+</head><body>{polish_icons(header(lang, page))}<main id="main">{polish_icons(neutralize_schedule(body, lang))}</main>{polish_icons(footer(lang))}</body></html>'''
 
 
 def page_hero(lang: str, eyebrow: str, title: str, lead: str, crumb: str = "") -> str:
@@ -133,7 +156,7 @@ def page_hero(lang: str, eyebrow: str, title: str, lead: str, crumb: str = "") -
     return f'<section class="interior-hero"><div class="wrap">{breadcrumb}<span class="eyebrow">{eyebrow}</span><h1>{title}</h1><p>{lead}</p></div></section>'
 
 
-def home(lang: str) -> str:
+def _home_base(lang: str) -> str:
     if lang == "ar":
         return f'''<section class="home-hero"><div class="wrap hero-layout"><div class="hero-content"><span class="eyebrow"><span class="tiny-star">✦</span> جمعية جسر الطفولة والشباب · المغرب</span><h1>نفتح <em>جسوراً</em> تعبر بها الطفولة والشباب نحو الفرص.</h1><p class="hero-lead">نلتقي حول التربية والتخييم والمبادرة والعمل التطوعي، لنمنح الأطفال والشباب مساحة يكتشفون فيها قدراتهم ويشاركون في بناء مجتمعهم.</p><div class="hero-actions">{a(lang,'activities','اكتشف أنشطتنا <span aria-hidden="true">↗</span>','btn btn-primary')}{a(lang,'about','تعرّف إلى الجمعية','btn btn-ghost')}</div><div class="hero-note"><span class="note-line"></span> من مكناس إلى فضاءات العمل الجمعوي بالمغرب</div></div><figure class="hero-visual"><img src="/assets/workshop-morocco-2026.webp" alt="صورة تعبيرية لشباب في ورشة عمل تعاونية بالمغرب" width="1200" height="900" fetchpriority="high"></figure></div></section>
 <section class="ticker" aria-label="مجالات اهتمامنا"><div class="wrap ticker-inner"><span>الطفولة والتخييم</span><b>✦</b><span>التربية والتكوين</span><b>✦</b><span>المبادرة الشبابية</span><b>✦</b><span>التطوع والمواطنة</span></div></section>
@@ -182,7 +205,7 @@ def programs(lang: str) -> str:
     return hero + f'<section class="section"><div class="wrap program-list">{content}</div></section>' + statutory + after + cta(lang)
 
 
-def activities(lang: str) -> str:
+def _activities_base(lang: str) -> str:
     if lang == "ar":
         hero = page_hero(lang, "الأنشطة والمستجدات", "حيث تتحول الأفكار إلى لقاءات وتجارب.", "تابع الأنشطة المعلنة وتعرّف إلى تفاصيل المشاركة والمواعيد والأماكن من مصدرها.", "الأنشطة")
         card = f'''<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">على الرزنامة</span><h2>النشاط المقبل</h2></div></div><article class="listing-card"><a class="listing-image" href="{url(lang,EVENT)}" aria-label="تفاصيل جامعة الشباب"><img src="/assets/youth-university-2026.webp" alt="ملصق جامعة الشباب" width="1414" height="2000"></a><div class="listing-body"><span class="status-pill">20–24 أكتوبر 2026 · السعيدية</span><h3>جامعة الشباب</h3><p>لقاء لفائدة الشباب من 18 إلى 35 سنة بالمركز الوطني للتخييم بالسعيدية، تحت شعار «المخيمات التربوية.. رؤية جديدة لصناعة الحياة».</p><dl><div><dt>المكان</dt><dd>السعيدية</dd></div><div><dt>الفئة</dt><dd>18–35 سنة</dd></div></dl>{a(lang,EVENT,'اطلع على الإعلان الكامل ↗','btn btn-primary')}</div></article></div></section>'''
@@ -190,6 +213,57 @@ def activities(lang: str) -> str:
         hero = page_hero(lang, "Activités et actualités", "Quand les idées deviennent des rencontres.", "Retrouvez les activités annoncées, leurs dates, leurs lieux et les informations utiles pour y participer.", "Activités")
         card = f'''<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">À l’agenda</span><h2>Notre prochaine activité</h2></div></div><article class="listing-card"><a class="listing-image" href="{url(lang,EVENT)}" aria-label="Détails de l’Université des jeunes"><img src="/assets/youth-university-2026.webp" alt="Affiche de l’Université des jeunes" width="1414" height="2000"></a><div class="listing-body"><span class="status-pill">20–24 octobre 2026 · Saïdia</span><h3>Université des jeunes</h3><p>Une rencontre pour les 18–35 ans au Centre national de camping de Saïdia, sous le thème « Les colonies éducatives : une nouvelle vision pour façonner la vie ».</p><dl><div><dt>Lieu</dt><dd>Saïdia</dd></div><div><dt>Public</dt><dd>18–35 ans</dd></div></dl>{a(lang,EVENT,'Voir l’annonce complète ↗','btn btn-primary')}</div></article></div></section>'''
     return hero + card
+
+
+def home(lang: str) -> str:
+    teaser = (
+        '<section class="section evidence-section"><div class="wrap evidence-layout"><div>'
+        '<span class="eyebrow">الأثر والشفافية</span><h2>من الإعلان إلى حصيلة موثّقة.</h2>'
+        '<p>نعرض تفاصيل الأنشطة قبل موعدها، وننشر ما تحقق بعد توفر معلومات معتمدة. '
+        'لا نقدّم أعداداً أو نتائج قبل التحقق منها.</p>'
+        + a(lang, "impact", "كيف نوثّق عملنا ↗", "text-action")
+        + '</div><div class="evidence-steps"><div><span>01</span><strong>نشاط معلن</strong>'
+        '<p>موعد ومكان وفئة معنية ومعلومات المشاركة.</p></div><div><span>02</span>'
+        '<strong>حصيلة بعد التنفيذ</strong><p>ما جرى فعلاً، ومواد مسموح بنشرها، ونتائج مثبتة.</p>'
+        '</div></div></div></section>'
+    ) if lang == "ar" else (
+        '<section class="section evidence-section"><div class="wrap evidence-layout"><div>'
+        '<span class="eyebrow">Impact et transparence</span><h2>De l’annonce au bilan documenté.</h2>'
+        '<p>Nous présentons les activités avant leur tenue et publions leurs résultats '
+        'lorsque des informations validées sont disponibles.</p>'
+        + a(lang, "impact", "Comment nous documentons notre travail ↗", "text-action")
+        + '</div><div class="evidence-steps"><div><span>01</span><strong>Annonce</strong>'
+        '<p>Dates, lieu, public et renseignements.</p></div><div><span>02</span>'
+        '<strong>Bilan après réalisation</strong><p>Faits, contenus autorisés et résultats vérifiés.</p>'
+        '</div></div></div></section>'
+    )
+    return _home_base(lang).replace('<section class="section steps-section">', teaser + '<section class="section steps-section">', 1)
+
+
+def activities(lang: str) -> str:
+    if lang == "ar":
+        note = '<section class="section pale-section"><div class="wrap editorial-grid"><div><span class="eyebrow">سجل الأنشطة</span><h2>الإعلان بداية القصة.</h2></div><div class="editorial-copy"><p>تعرض هذه الصفحة إعلان جامعة الشباب. وستُضاف حصيلة موثقة بعد التنفيذ عند توفرها؛ فالإعلان لا يمثل تقريراً عن النتائج.</p>' + a(lang, "impact", "كيف نعرض حصيلة الأنشطة ↗", "text-action") + '</div></div></section>'
+    else:
+        note = '<section class="section pale-section"><div class="wrap editorial-grid"><div><span class="eyebrow">Journal des activités</span><h2>Une annonce ouvre le récit.</h2></div><div class="editorial-copy"><p>Cette page présente l’annonce de l’Université des jeunes. Un bilan documenté sera ajouté après sa réalisation, lorsque les éléments seront disponibles.</p>' + a(lang, "impact", "Comment nous présentons les bilans ↗", "text-action") + '</div></div></section>'
+    return _activities_base(lang) + note
+
+
+def impact(lang: str) -> str:
+    if lang == "ar":
+        hero = page_hero(lang, "الأثر والشفافية", "نُظهر ما نعرفه، ونوثّق ما ننجزه.", "نميز بين أهداف الجمعية، والأنشطة المعلنة، والنتائج التي تُنشر بعد التحقق منها.", "الأثر والشفافية")
+        intro = '<section class="section"><div class="wrap impact-intro"><div><span class="eyebrow">المتاح حالياً</span><h2>معلومات واضحة دون أرقام افتراضية.</h2><p>يوثق الموقع تأسيس الجمعية ومجالاتها، ويعرض إعلان جامعة الشباب المقرر من 20 إلى 24 أكتوبر 2026 في السعيدية. لم تُنشر حصيلة لهذا النشاط بعد؛ ولا نعرض أهداف الجمعية باعتبارها نتائج ميدانية.</p></div><article class="record-card"><span class="record-label">إعلان منشور</span><h3>جامعة الشباب · السعيدية</h3><p>التاريخ، المكان، الفئة المعنية، الملصق وأرقام الاستفسار.</p><span class="record-status">حصيلة التنفيذ: لم تُنشر بعد</span>' + a(lang, EVENT, "عرض الإعلان ↗", "text-action") + '</article></div></section>'
+        cards = [("01 / التنفيذ", "ما الذي جرى؟", "الموعد الفعلي، المكان، الأنشطة والشركاء بعد التأكد من التنفيذ."), ("02 / المشاركة", "من شارك؟", "الفئات المستفيدة وأعداد المشاركين حين تتوفر بيانات دقيقة ومسموح بنشرها."), ("03 / التعلم", "ما الذي تحقق؟", "المخرجات والتقييم أو شهادات المشاركين بموافقتهم، مع توضيح حدود ما تثبته.")]
+        end = '<section class="section"><div class="wrap editorial-grid"><div><span class="eyebrow">الخصوصية والمسؤولية</span><h2>نوثق الأنشطة باحترام المشاركين.</h2></div><div class="editorial-copy"><p>عند نشر القصص والصور، نراعي الموافقات اللازمة وخصوصية الأطفال. كما نميز بين عدد المشاركين وبين التغير الذي يمكن إثباته.</p><p>ستُضاف التقارير والمواد المعتمدة عندما تتوفر، مع بيان تاريخ النشاط ومصدر المعلومات.</p>' + a(lang, "about", "تعرف إلى الجمعية ↗", "text-action") + '</div></div></section>'
+        eyebrow, title, lead = "طريقتنا", "ما الذي نذكره في الحصيلة؟", "معلومات قابلة للتحقق، تميز بين المخطط والمنفذ."
+    else:
+        hero = page_hero(lang, "Impact et transparence", "Dire ce que nous savons, documenter ce que nous faisons.", "Une distinction claire entre objectifs, activités annoncées et résultats vérifiés.", "Impact et transparence")
+        intro = '<section class="section"><div class="wrap impact-intro"><div><span class="eyebrow">Aujourd’hui</span><h2>Des faits sans chiffres supposés.</h2><p>Le site présente la création et les domaines de l’association, ainsi que l’annonce de l’Université des jeunes prévue du 20 au 24 octobre 2026 à Saïdia. Aucun bilan de cette activité n’est encore publié ; les objectifs ne sont pas présentés comme des résultats.</p></div><article class="record-card"><span class="record-label">Annonce publiée</span><h3>Université des jeunes · Saïdia</h3><p>Dates, lieu, public concerné, affiche et numéros de renseignement.</p><span class="record-status">Bilan : pas encore publié</span>' + a(lang, EVENT, "Voir l’annonce ↗", "text-action") + '</article></div></section>'
+        cards = [("01 / Réalisation", "Qu’a-t-on fait ?", "Dates réelles, lieu, activités et partenaires après confirmation."), ("02 / Participation", "Qui a participé ?", "Publics et effectifs lorsque les données sont fiables et publiables."), ("03 / Apprentissage", "Qu’a-t-on obtenu ?", "Productions, évaluations ou témoignages recueillis avec accord, en précisant leurs limites.")]
+        end = '<section class="section"><div class="wrap editorial-grid"><div><span class="eyebrow">Vie privée et responsabilité</span><h2>Documenter dans le respect des participants.</h2></div><div class="editorial-copy"><p>Les récits et images sont publiés avec les autorisations nécessaires, en protégeant particulièrement la vie privée des enfants. Un effectif ne suffit pas à établir un impact.</p><p>Les comptes rendus validés seront ajoutés avec la date de l’activité et la source des informations.</p>' + a(lang, "about", "Découvrir l’association ↗", "text-action") + '</div></div></section>'
+        eyebrow, title, lead = "Notre méthode", "Que contient un bilan ?", "Des faits vérifiables qui distinguent le prévu du réalisé."
+    grid = ''.join(f'<article><span>{n}</span><h3>{heading}</h3><p>{body}</p></article>' for n, heading, body in cards)
+    method = f'<section class="section pale-section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">{eyebrow}</span><h2>{title}</h2></div><p>{lead}</p></div><div class="evidence-grid">{grid}</div></div></section>'
+    return hero + intro + method + end + cta(lang)
 
 
 def participate(lang: str) -> str:
@@ -245,7 +319,7 @@ def cta(lang: str) -> str:
     return f'<section class="section join-section"><div class="wrap join-box"><div><span class="eyebrow">Suivre nos activités</span><h2>Découvrez ce qui se passe, <em>participez à votre façon.</em></h2></div>{a(lang,"activities","Les activités ↗","btn btn-light")}</div></section>'
 
 
-BUILDERS = {"home": home, "about": about, "programs": programs, "activities": activities, "participate": participate, "contact": contact, EVENT: event}
+BUILDERS = {"home": home, "about": about, "programs": programs, "activities": activities, "impact": impact, "participate": participate, "contact": contact, EVENT: event}
 
 
 def main() -> None:
