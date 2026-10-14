@@ -1,4 +1,8 @@
 /* The activity journal and evidence page share a restrained editorial rhythm. */
+.area-card{display:block;text-decoration:none}
+.area-card:focus-visible{box-shadow:0 0 0 4px #f6ad39}
+.program-row{scroll-margin-top:24px}
+.program-row:target{background:#f3f9f5;box-shadow:0 0 0 12px #f3f9f5}
 .evidence-section{background:#f5f9f7;border-block:1px solid #e0eae4}
 .evidence-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,70px);align-items:center}
 .evidence-layout h2{font-size:clamp(28px,3vw,41px);max-width:590px;margin:10px 0 13px}

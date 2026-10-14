@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from html import escape
 from pathlib import Path
+import re
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -197,7 +198,7 @@ def programs(lang: str) -> str:
         hero = page_hero(lang, "Nos champs d’action", "Apprendre, expérimenter et prendre l’initiative.", "Quatre domaines complémentaires articulent les activités de l’association autour des enfants, des jeunes et de l’action collective.", "Nos domaines")
         cards = [("01", "Éducation et formation", "Des apprentissages pour la vie.", "Ateliers et activités pour développer les compétences, la créativité et la coopération. L’expérience et la pratique y ont toute leur place."), ("02", "Enfance et colonies", "Un espace pour découvrir.", "Activités éducatives, loisirs et expériences collectives qui soutiennent la confiance en soi, le respect et la vie en groupe."), ("03", "Jeunesse et bénévolat", "Les jeunes acteurs du changement.", "Espaces d’initiative, d’accompagnement et de bénévolat où les jeunes peuvent proposer des idées et contribuer à les réaliser."), ("04", "Culture et citoyenneté", "L’expression crée des liens.", "Rencontres, créativité et participation citoyenne pour donner aux enfants et aux jeunes une place dans le dialogue.")]
         after = '<section class="section pale-section"><div class="wrap editorial-grid"><div><span class="eyebrow">Des domaines aux activités</span><h2>Chaque activité, une occasion de se rencontrer.</h2></div><div class="editorial-copy"><p>Ces domaines prennent la forme de rencontres, d’ateliers, de colonies et d’initiatives portées ou partagées par les jeunes. Retrouvez les détails de l’activité annoncée actuellement.</p>'+a(lang,'activities','Voir les activités ↗','text-action')+'</div></div></section>'
-    content = ''.join(f'<article class="program-row"><span class="program-number">{n}</span><div><span class="eyebrow">{kicker}</span><h2>{title}</h2></div><p>{description}</p></article>' for n,title,kicker,description in cards)
+    content = ''.join(f'<article class="program-row" id="area-{n}"><span class="program-number">{n}</span><div><span class="eyebrow">{kicker}</span><h2>{title}</h2></div><p>{description}</p></article>' for n,title,kicker,description in cards)
     if lang == "ar":
         statutory = '''<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">من أهداف القانون الأساسي</span><h2>مجالات أخرى تتقاطع مع رسالتنا.</h2></div><p>تحدد هذه الأهداف اتجاه عمل الجمعية، وتتحول إلى أنشطة بحسب البرامج والشراكات المتاحة.</p></div><div class="principles"><article><span>01 / التعليم</span><h3>مساندة المسار الدراسي</h3><p>المساهمة في الحد من الهدر المدرسي، ودعم تكامل دور الأسرة والمدرسة، وتنمية مواهب الأطفال والشباب.</p></article><article><span>02 / التمكين</span><h3>النساء والفتيات</h3><p>دعم التعلم ومحو الأمية والتكوين، وتشجيع المبادرات التي توسع فرص النساء والفتيات.</p></article><article><span>03 / المجتمع</span><h3>الرياضة والسلامة والتضامن</h3><p>الأنشطة الرياضية والتوعية بالسلامة الطرقية والإسعافات الأولية، والمبادرات التضامنية والصحية.</p></article></div></div></section>'''
     else:
@@ -237,7 +238,16 @@ def home(lang: str) -> str:
         '<strong>Bilan après réalisation</strong><p>Faits, contenus autorisés et résultats vérifiés.</p>'
         '</div></div></div></section>'
     )
-    return _home_base(lang).replace('<section class="section steps-section">', teaser + '<section class="section steps-section">', 1)
+    base = _home_base(lang)
+    base = re.sub(r'<section class="section steps-section">.*?</section>', teaser, base, count=1, flags=re.S)
+    cards = iter(range(1, 5))
+    return re.sub(
+        r'<article class="area-card">(.*?)</article>',
+        lambda match: f'<a class="area-card" href="{url(lang, "programs")}#area-{next(cards):02d}">{match.group(1)}</a>',
+        base,
+        count=4,
+        flags=re.S,
+    )
 
 
 def activities(lang: str) -> str:
