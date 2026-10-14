@@ -5,6 +5,7 @@ from __future__ import annotations
 from html import escape
 from pathlib import Path
 import re
+import json
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -104,6 +105,17 @@ def neutralize_schedule(markup: str, lang: str) -> str:
     }
     for old, new in replacements[lang].items():
         markup = markup.replace(old, new)
+    markup = markup.replace(
+        '<section class="section featured-section">',
+        '<section class="section featured-section" data-event-promo>',
+    )
+    markup = markup.replace(
+        'للمشاركة أو الاستفسار عن هذا النشاط',
+        'أرقام الاستفسار الواردة في إعلان النشاط',
+    ).replace(
+        'Participer ou demander des renseignements sur cette activité',
+        'Numéros indiqués sur l’annonce de cette activité',
+    )
     return markup
 
 
@@ -134,12 +146,39 @@ def footer(lang: str) -> str:
 </div><div class="wrap footer-bottom"><span>© <span id="year">2026</span> {t["short"]}. {t["footer_rights"]}.</span><span dir="ltr">ajej.ma</span></div></footer>'''
 
 
+def event_structured_data(lang: str) -> str:
+    """The advertised dates have no published hours or ticket price."""
+    data = {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "@id": "https://ajej.ma/ar/activities/youth-university-2026/#event",
+        "name": "جامعة الشباب" if lang == "ar" else "Université des jeunes",
+        "description": COPY[lang]["pages"][EVENT][1],
+        "startDate": "2026-10-20",
+        "endDate": "2026-10-24",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+            "@type": "Place",
+            "name": "المركز الوطني للتخييم بالسعيدية" if lang == "ar" else "Centre national de camping de Saïdia",
+            "address": {"@type": "PostalAddress", "addressLocality": "Saïdia", "addressCountry": "MA"},
+        },
+        "image": ["https://ajej.ma/assets/youth-university-2026.webp"],
+        "organizer": {"@type": "Organization", "name": COPY[lang]["name"], "url": "https://ajej.ma" + url(lang)},
+        "url": "https://ajej.ma" + url(lang, EVENT),
+        "inLanguage": lang,
+    }
+    return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False).replace("</", "<\\/") + '</script>'
+
+
 def layout(lang: str, page: str, body: str) -> str:
     t = COPY[lang]
     title, description = t["pages"][page]
     direction = "rtl" if lang == "ar" else "ltr"
     current = "https://ajej.ma" + url(lang, page)
     image = "https://ajej.ma/assets/youth-university-2026.webp" if page in ("activities", EVENT) else "https://ajej.ma/assets/logo-jisr-original-2026-10.png"
+    structured = event_structured_data(lang) if page == EVENT else ""
+    top = polish_icons(header(lang, page)).replace('<div class="topline">', '<div class="topline" data-event-promo>', 1)
+    bottom = polish_icons(footer(lang)).replace('<div class="footer-feature">', '<div class="footer-feature" data-event-promo>', 1)
     return f'''<!doctype html>
 <html lang="{lang}" dir="{direction}"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -147,8 +186,8 @@ def layout(lang: str, page: str, body: str) -> str:
 <meta property="og:type" content="website"><meta property="og:site_name" content="Association Jisr"><meta property="og:title" content="{escape(title, quote=True)} | {escape(t['short'], quote=True)}"><meta property="og:description" content="{escape(description, quote=True)}"><meta property="og:image" content="{image}"><meta property="og:url" content="{current}">
 <title>{escape(title)} | {escape(t['short'])}</title>
 <link rel="canonical" href="{current}"><link rel="alternate" hreflang="ar" href="https://ajej.ma{url('ar', page)}"><link rel="alternate" hreflang="fr" href="https://ajej.ma{url('fr', page)}"><link rel="alternate" hreflang="x-default" href="https://ajej.ma{url('ar', page)}">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site-2026-compact.css"><link rel="stylesheet" href="/assets/site-2026-impact.css"><script defer src="/assets/site-2026.js"></script>
-</head><body>{polish_icons(header(lang, page))}<main id="main">{polish_icons(neutralize_schedule(body, lang))}</main>{polish_icons(footer(lang))}</body></html>'''
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site-2026-compact.css"><link rel="stylesheet" href="/assets/site-2026-impact.css"><script defer src="/assets/site-2026.js"></script>{structured}
+</head><body>{top}<main id="main">{polish_icons(neutralize_schedule(body, lang))}</main>{bottom}</body></html>'''
 
 
 def page_hero(lang: str, eyebrow: str, title: str, lead: str, crumb: str = "") -> str:
@@ -255,7 +294,12 @@ def activities(lang: str) -> str:
         note = '<section class="section pale-section"><div class="wrap editorial-grid"><div><span class="eyebrow">سجل الأنشطة</span><h2>الإعلان بداية القصة.</h2></div><div class="editorial-copy"><p>تعرض هذه الصفحة إعلان جامعة الشباب. وستُضاف حصيلة موثقة بعد التنفيذ عند توفرها؛ فالإعلان لا يمثل تقريراً عن النتائج.</p>' + a(lang, "impact", "كيف نعرض حصيلة الأنشطة ↗", "text-action") + '</div></div></section>'
     else:
         note = '<section class="section pale-section"><div class="wrap editorial-grid"><div><span class="eyebrow">Journal des activités</span><h2>Une annonce ouvre le récit.</h2></div><div class="editorial-copy"><p>Cette page présente l’annonce de l’Université des jeunes. Un bilan documenté sera ajouté après sa réalisation, lorsque les éléments seront disponibles.</p>' + a(lang, "impact", "Comment nous présentons les bilans ↗", "text-action") + '</div></div></section>'
-    return _activities_base(lang) + note
+    listing = _activities_base(lang)
+    if lang == "ar":
+        listing = listing.replace("<h2>النشاط المقبل</h2>", "<h2 data-event-list-title>النشاط المعلن</h2>")
+    else:
+        listing = listing.replace("<h2>Notre prochaine activité</h2>", "<h2 data-event-list-title>Activité annoncée</h2>")
+    return listing + note
 
 
 def impact(lang: str) -> str:
@@ -290,6 +334,7 @@ def participate(lang: str) -> str:
         membership = '''<div class="membership-note"><h2>الانخراط في الجمعية</h2><p>ينص القانون الأساسي على أعضاء نشيطين يشاركون بانتظام في عمل الجمعية، وأعضاء شرفيين يساندون أهدافها. يُدرس طلب الانخراط من طرف المكتب المختص وفق شروط العضوية، ولا تُعد الرغبة في المشاركة قبولاً تلقائياً للعضوية.</p></div>'''
     else:
         membership = '''<div class="membership-note"><h2>Adhérer à l’association</h2><p>Les statuts distinguent les membres actifs, qui participent régulièrement à la vie associative, et les membres d’honneur, qui soutiennent sa mission. Une demande d’adhésion est étudiée par le bureau compétent selon les conditions statutaires ; manifester son intérêt ne vaut pas admission automatique.</p></div>'''
+    note = note.replace('<section class="section pale-section">', '<section class="section pale-section" data-event-promo>', 1)
     return hero + f'<section class="section"><div class="wrap ways-grid">{cards}</div><div class="wrap">{membership}</div></section>' + note + cta(lang)
 
 
@@ -308,19 +353,25 @@ def event(lang: str) -> str:
         hero = page_hero(lang, "نشاط قريب · 20–24 أكتوبر 2026", "جامعة الشباب", "من 20 إلى 24 أكتوبر 2026 بالمركز الوطني للتخييم بالسعيدية، لفائدة الشباب من 18 إلى 35 سنة.", "جامعة الشباب")
         title = "معلومات النشاط"
         fields = [("التاريخ", "من 20 إلى 24 أكتوبر 2026"), ("المكان", "المركز الوطني للتخييم بالسعيدية"), ("الفئة المستهدفة", "الشباب من 18 إلى 35 سنة"), ("تحت شعار", "المخيمات التربوية.. رؤية جديدة لصناعة الحياة")]
-        contact_title = "للمشاركة أو الاستفسار عن النشاط"
+        contact_title = "بيانات الاستفسار الواردة في الإعلان"
         caption = "الملصق الكامل لجامعة الشباب"
         alt = "ملصق جامعة الشباب: 20 إلى 24 أكتوبر 2026 في السعيدية"
     else:
         hero = page_hero(lang, "À venir · 20–24 octobre 2026", "Université des jeunes", "Du 20 au 24 octobre 2026 au Centre national de camping de Saïdia, pour les jeunes de 18 à 35 ans.", "Université des jeunes")
         title = "Informations pratiques"
         fields = [("Dates", "Du 20 au 24 octobre 2026"), ("Lieu", "Centre national de camping de Saïdia"), ("Public", "Jeunes de 18 à 35 ans"), ("Thème", "Les colonies éducatives : une nouvelle vision pour façonner la vie")]
-        contact_title = "Participation et renseignements sur l’activité"
+        contact_title = "Contacts indiqués sur l’annonce"
         caption = "Affiche complète de l’Université des jeunes"
         alt = "Affiche de l’Université des jeunes : 20 au 24 octobre 2026 à Saïdia"
     dl = "".join(f'<div><dt>{key}</dt><dd>{value}</dd></div>' for key,value in fields)
     details = f'''<section class="section"><div class="wrap event-layout"><figure class="event-poster"><img src="/assets/youth-university-2026.webp" width="1414" height="2000" alt="{alt}"><figcaption>{caption}</figcaption></figure><div class="event-side"><span class="eyebrow">{COPY[lang]["notice"]}</span><h2>{title}</h2><dl class="event-data">{dl}</dl><div class="event-contact"><h3>{contact_title}</h3><p><span lang="ar">لحبيب آيت لحبيب</span><a href="tel:+212667082383" dir="ltr">0667 08 23 83</a></p><p><span lang="ar">عبد الرحيم آيت احميد</span><a href="tel:+212762248173" dir="ltr">0762 24 81 73</a></p></div></div></div></section>'''
-    return hero + details
+    archive_text = (
+        "انتهى الموعد المعلن لهذا النشاط. تبقى هذه صفحة الإعلان الأصلي، ولا تتوفر فيها حصيلة تنفيذ موثقة بعد."
+        if lang == "ar" else
+        "Les dates annoncées sont passées. Cette page conserve l’annonce initiale ; aucun bilan de réalisation vérifié n’est encore publié."
+    )
+    archive_note = f'<div class="wrap event-archive-note" data-event-archive-note hidden role="status">{archive_text}</div>'
+    return hero + archive_note + details
 
 
 def cta(lang: str) -> str:

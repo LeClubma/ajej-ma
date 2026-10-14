@@ -9,6 +9,11 @@ l'association, les domaines d'action, les activités, la participation, le
 contact et la page de l'Université des jeunes (octobre 2026).
 Une page « Impact et transparence » distingue les annonces des bilans
 documentés, en arabe et en français.
+La page dédiée à l'Université des jeunes comprend des données structurées
+Event limitées aux faits publiés (dates sans horaires, lieu et affiche).
+Après le 24 octobre 2026, le script masque les promotions de participation
+et affiche une note d'archive sur l'annonce, sans supposer que l'activité
+a eu lieu. Le compte rendu devra être ajouté après validation des faits.
 
 ## Mise à jour
 

@@ -1,4 +1,7 @@
 /* The activity journal and evidence page share a restrained editorial rhythm. */
+[hidden]{display:none!important}
+.event-archive-note{background:#fff8e9;border:1px solid #eed7aa;border-inline-start:4px solid #d49228;border-radius:11px;color:#604817;padding:13px 18px;margin-top:18px;font-size:14px;font-weight:700}
+.event-past .footer-grid{grid-template-columns:1.3fr .75fr}
 .area-card{display:block;text-decoration:none}
 .area-card:focus-visible{box-shadow:0 0 0 4px #f6ad39}
 .program-row{scroll-margin-top:24px}
@@ -41,6 +44,8 @@
   .evidence-grid h3{margin:8px 0 5px}
 }
 @media(max-width:620px){
+  .event-past .footer-grid{grid-template-columns:1fr}
+  .event-past .footer-grid>div:first-child{grid-column:auto}
   .brand{flex-basis:158px;width:158px;height:55px}
   .evidence-layout>div>p,.impact-intro>div>p{font-size:14px}
   .evidence-steps>div{padding:13px}
